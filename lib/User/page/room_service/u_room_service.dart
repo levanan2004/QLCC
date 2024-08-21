@@ -240,7 +240,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: GestureDetector(
                               onTap: () {
-                                _showInterstitialAd();
+                                // _showInterstitialAd();
 
                                 Navigator.push(
                                     context,

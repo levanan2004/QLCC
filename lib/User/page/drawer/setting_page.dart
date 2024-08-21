@@ -10,8 +10,8 @@ class MySettingsPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               "Chuyển đổi ngôn ngữ: ".tr(),
@@ -29,6 +29,18 @@ class MySettingsPage extends StatelessWidget {
                 }
               },
               child: Text("Tiếng Việt").tr(),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Hàm xử lý khi nút Ngôn ngữ được nhấn
+                final currentLocale = context.locale.toString();
+                if (currentLocale == "en") {
+                  context.setLocale(Locale("vi"));
+                } else {
+                  context.setLocale(Locale("en"));
+                }
+              },
+              child: Text("Tiếng Anh").tr(),
             ),
           ],
         ),
