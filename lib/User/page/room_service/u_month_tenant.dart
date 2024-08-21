@@ -2,6 +2,7 @@ import 'package:apartment_management/Admin/components/con_month_tenant.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/page/room_service/u_service_tenant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class User_MonthRoom extends StatefulWidget {
@@ -89,7 +90,10 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
                           if (snapshot.hasData) {
                             if (idServiceMonth.isEmpty) {
                               // Handle initial empty state
-                              return Center(child: Text('Loading Month Data'));
+                              return Center(
+                                  child: Text(
+                                      "Bạn chưa được thêm dịch vụ tháng này"
+                                          .tr()));
                             } else {
                               return ListView.builder(
                                   scrollDirection: Axis.horizontal,
@@ -112,7 +116,7 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
                             );
                           } else {
                             return Center(
-                              child: Text('Hãy thêm dữ liệu'),
+                              child: Text("Hãy thêm dữ liệu".tr()),
                             );
                           }
                         }),
@@ -131,7 +135,7 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Tháng " + MonthOld.toString(),
+                            "Tháng ".tr() + MonthOld.toString(),
                             style: TextStyle(
                                 color: Color.fromARGB(255, 149, 208, 238),
                                 fontSize: 20,
@@ -161,7 +165,7 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
             SizedBox(
               width: 20,
             ),
-            Text("dịch vụ",
+            Text("Dịch vụ: ".tr(),
                 style: TextStyle(
                     color: Colors.green,
                     fontSize: 25,

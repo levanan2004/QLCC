@@ -1,13 +1,17 @@
 import 'package:apartment_management/Admin/adminPage/Rules/page_rules.dart';
 import 'package:apartment_management/Auth/register/add_code.dart';
-import 'package:apartment_management/User/page/account_page.dart';
-import 'package:apartment_management/User/page/message/page_message.dart';
+import 'package:apartment_management/User/page/drawer/account_page.dart';
+import 'package:apartment_management/User/page/drawer/message/page_message.dart';
 import 'package:apartment_management/User/page/room_service/u_room_page.dart';
 import 'package:apartment_management/User/page/room_service/u_service_get_apartmentbuilding.dart';
 import 'package:apartment_management/User/page/violate/u_page_violate.dart';
+import 'package:apartment_management/admob/banner.dart';
+import 'package:apartment_management/admob/interstitial.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class User_MyRoomTenantService extends StatefulWidget {
   const User_MyRoomTenantService({
@@ -22,11 +26,39 @@ class User_MyRoomTenantService extends StatefulWidget {
 class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
   final email = FirebaseAuth.instance.currentUser!.email;
   String? code;
+
+  // <quảng cáo Trung gian(Interstitial)>
+  final InterstitialAdService _interstitialAdService = InterstitialAdService();
+  void _showInterstitialAd() {
+    _interstitialAdService.showInterstitialAd();
+  }
+  // </quảng cáo Trung gian(Interstitial)>
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkUserCode();
+    // Chạy quảng cáo Mở Ứng Dụng
+    loadad();
+    // Khởi tạo Trung gian(Interstitial) khi vừa sang trang này
+    _interstitialAdService.loadInterstitialAd();
+  }
+
+  AppOpenAd? _appOpenAd;
+  loadad() {
+    AppOpenAd.load(
+      adUnitId: 'ca-app-pub-3741659942413980/8735305607',
+      request: AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: (ad) {
+          _appOpenAd = ad;
+          _appOpenAd!.show();
+        },
+        onAdFailedToLoad: (error) {
+          debugPrint("Error:  $error");
+        },
+      ),
+    );
   }
 
   void checkUserCode() async {
@@ -51,14 +83,24 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 50,
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // quảng cáo banner
+                          BannerAdWidget()
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
                       ),
                       Row(
                         children: [
                           SizedBox(
                             width: 20,
                           ),
-                          Text("Tầng: ",
+                          Text("Tầng: ".tr(),
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontWeight: FontWeight.bold,
@@ -84,7 +126,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text("Dịch vụ: ",
+                          Text("Dịch vụ: ".tr(),
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontWeight: FontWeight.bold,
@@ -138,7 +180,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Tài Khoản',
+                                        "Tài Khoản".tr(),
                                         style: TextStyle(
                                             color: Colors.brown[400],
                                             fontSize: 20,
@@ -180,7 +222,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Vi Phạm',
+                                        "Vi Phạm".tr(),
                                         style: TextStyle(
                                             color: Colors.red,
                                             fontSize: 20,
@@ -198,6 +240,8 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: GestureDetector(
                               onTap: () {
+                                _showInterstitialAd();
+
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -222,7 +266,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Tin nhắn',
+                                        "Tin Nhắn".tr(),
                                         style: TextStyle(
                                             color: Colors.deepPurple,
                                             fontSize: 20,
@@ -268,7 +312,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Nội Quy',
+                                          "Nội Quy".tr(),
                                           style: TextStyle(
                                               color: Colors.greenAccent,
                                               fontSize: 20,
@@ -282,6 +326,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                           )
                         ],
                       ),
+
                       SizedBox(
                         height: 300,
                       ),
@@ -294,14 +339,14 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
         : Center(
             child: Column(
               children: [
-                Text(
-                    'Người dùng chưa nhập CODE của quản lý đưa, hãy nhấn vào Thêm CODE'),
+                Text("Người dùng chưa nhập CODE của quản lý đưa, hãy nhấn vào Thêm CODE")
+                    .tr(),
                 ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => MyAddCODE()));
                     },
-                    child: Text('Thêm CODE'))
+                    child: Text("Thêm Mã mời").tr())
               ],
             ),
           );
@@ -334,7 +379,7 @@ class ContainerAnh extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Trang Chủ",
+                  "Trang Chủ".tr(),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,

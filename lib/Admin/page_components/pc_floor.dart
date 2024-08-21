@@ -2,6 +2,7 @@ import 'package:apartment_management/Admin/adminPage/room_page.dart';
 import 'package:apartment_management/Admin/components/con_floor_room.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SBFloor extends StatefulWidget {
@@ -33,13 +34,13 @@ class _SBFloorState extends State<SBFloor> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: const Text("Xóa Tầng"),
-                content: const Text("Bạn có chắc chắn rằng muốn xóa tầng này?"),
+                title: Text("Xóa Tầng".tr()),
+                content: Text("Bạn có chắc chắn rằng muốn xóa tầng này?").tr(),
                 actions: [
                   // CANCEL BUTTON
                   TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text("Hủy")),
+                      child: const Text("Hủy").tr()),
 
                   // DELETE BUTTON
                   TextButton(
@@ -59,7 +60,7 @@ class _SBFloorState extends State<SBFloor> {
                         }
                         Navigator.pop(context);
                       },
-                      child: const Text("Chắc Chắn")),
+                      child: const Text("Chắc Chắn").tr()),
                 ],
               ));
     }
@@ -86,7 +87,7 @@ class _SBFloorState extends State<SBFloor> {
                       onTap: () => _handleClickFloor(widget.idApartmentBuilding,
                           indexOfA.id, indexOfA['Floor']),
                       data: indexOfA['Floor'],
-                      text: "Tầng ",
+                      text: "Tầng ".tr(),
                       colorText: Color.fromARGB(255, 163, 214, 184),
                       colorContainer: Color.fromARGB(255, 163, 214, 184),
                       icon: Icon(

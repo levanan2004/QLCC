@@ -3,6 +3,7 @@ import 'package:apartment_management/User/components/email_textformf.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:apartment_management/User/components/sex_textformf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -87,13 +88,14 @@ class _MyAddTenantApartmentState extends State<MyAddTenantApartment> {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text('Tài khoản không tồn tại'),
-              content: Text(
-                  'Email "$email" không được tìm thấy trong danh sách người dùng.'),
+              title: Text("Tài khoản không tồn tại".tr()),
+              content: Text("Email " +
+                  email +
+                  "không được tìm thấy trong danh sách người dùng".tr()),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text('OK'),
+                  child: Text("Đóng").tr(),
                 ),
               ],
             ),
@@ -137,7 +139,7 @@ class _MyAddTenantApartmentState extends State<MyAddTenantApartment> {
                     ),
                     //welcome back message
                     Text(
-                      "Thêm Người Dùng",
+                      "Thêm Người Dùng".tr(),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -162,7 +164,7 @@ class _MyAddTenantApartmentState extends State<MyAddTenantApartment> {
                     RequiredTextForm(
                         maxLine: 20,
                         controller: NameController,
-                        hintText: "Họ tên",
+                        hintText: "Họ tên".tr(),
                         icon: Icon(Icons.person),
                         obscureText: false),
                     const SizedBox(
@@ -171,7 +173,7 @@ class _MyAddTenantApartmentState extends State<MyAddTenantApartment> {
                     // Ấp, Xã
                     SexTextForm(
                       controller: SexController,
-                      hintText: "Nam: 1, Nữ: 0",
+                      hintText: "Nam: 1, Nữ: 0".tr(),
                       icon: Icon(Icons.female),
                       obscureText: false,
                     ),
@@ -186,7 +188,7 @@ class _MyAddTenantApartmentState extends State<MyAddTenantApartment> {
                     GestureDetector(
                       onTap: addDataATenant,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

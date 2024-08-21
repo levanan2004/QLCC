@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -43,12 +44,13 @@ class _MyAddFloorState extends State<MyAddFloor> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Tầng này không tồn tại'),
+                title: Text("Tầng này không tồn tại".tr()),
                 content: Text(
-                    'Một tầng có cùng tên đã tồn tại trên Tòa nhà chung cư này.'),
+                    "Một tầng có cùng tên đã tồn tại trên Tòa nhà chung cư này."
+                        .tr()),
                 actions: [
                   TextButton(
-                    child: Text('OK'),
+                    child: Text("Đóng").tr(),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -105,7 +107,7 @@ class _MyAddFloorState extends State<MyAddFloor> {
                     ),
                     //welcome back message
                     Text(
-                      "Thêm Tầng Lầu",
+                      "Thêm Tầng Lầu".tr(),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -120,7 +122,7 @@ class _MyAddFloorState extends State<MyAddFloor> {
                     RequiredTextForm(
                         maxLine: 2,
                         controller: FloorController,
-                        hintText: "Tầng số (vd: 7,..)",
+                        hintText: "Tầng số (vd: 7,..)".tr(),
                         icon: Icon(Icons.person),
                         obscureText: false),
                     const SizedBox(
@@ -133,7 +135,7 @@ class _MyAddFloorState extends State<MyAddFloor> {
                     GestureDetector(
                       onTap: addDataF,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

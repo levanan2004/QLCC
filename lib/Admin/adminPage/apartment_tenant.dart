@@ -1,5 +1,6 @@
 import 'package:apartment_management/Admin/feature_page/add_apartment_tenant.dart';
 import 'package:apartment_management/Admin/page_components/pc_apartment_tenant.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyApartmentDetails extends StatefulWidget {
@@ -69,11 +70,18 @@ class _MyApartmentDetailsState extends State<MyApartmentDetails> {
                           width: 80,
                         ),
                         Text(
-                          "Phòng " + widget.apartmentName.toString(),
+                          "Phòng ".tr() + widget.apartmentName.toString(),
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(2.0, 2.0),
+                                  blurRadius: 5.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                )
+                              ]),
                         )
                       ],
                     ),
@@ -99,7 +107,7 @@ class _MyApartmentDetailsState extends State<MyApartmentDetails> {
                     SizedBox(
                       width: 20,
                     ),
-                    Text("Thành viên: ",
+                    Text("Thành Viên: ".tr(),
                         style: TextStyle(
                             color: Colors.black87,
                             fontSize: 25,

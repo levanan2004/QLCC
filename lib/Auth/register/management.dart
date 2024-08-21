@@ -1,5 +1,6 @@
 import 'package:apartment_management/Auth/register/admin_page.dart';
 import 'package:apartment_management/Auth/register/user_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ManagementRegister extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ManagementRegisterState extends State<ManagementRegister> {
                   ),
                 )),
             title: Text(
-              "Xin Chào! Đăng ký để Bắt đầu",
+              "Xin Chào! Đăng ký để Bắt đầu".tr(),
               style: TextStyle(
                 fontFamily: 'Urbanist',
                 color: Color(0xFF1E232C),
@@ -51,9 +52,9 @@ class _ManagementRegisterState extends State<ManagementRegister> {
                   icon: Icon(
                     Icons.person,
                   ),
-                  text: 'Người thuê',
+                  text: "Người thuê".tr(),
                 ),
-                Tab(icon: Icon(Icons.people), text: 'Người quản lý'),
+                Tab(icon: Icon(Icons.people), text: "Người quản lý".tr()),
               ],
             ),
           ),

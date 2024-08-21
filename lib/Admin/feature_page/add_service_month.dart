@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/number_textform.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,7 @@ class _MyAddServiceMonthState extends State<MyAddServiceMonth> {
                     ),
                     //welcome back message
                     Text(
-                      "Thêm Tháng",
+                      "Thêm Tháng".tr(),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -94,7 +95,7 @@ class _MyAddServiceMonthState extends State<MyAddServiceMonth> {
                     // Tên Tòa Nhà Chung Cư
                     NumberTextForm(
                         controller: MonthController,
-                        hintText: "Nhập Tháng(vd: 1,2,..12)",
+                        hintText: "Nhập Tháng(vd: 1,2,..12)".tr(),
                         icon: Icon(Icons.person),
                         obscureText: false),
                     const SizedBox(
@@ -107,7 +108,7 @@ class _MyAddServiceMonthState extends State<MyAddServiceMonth> {
                     GestureDetector(
                       onTap: addDataSM,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

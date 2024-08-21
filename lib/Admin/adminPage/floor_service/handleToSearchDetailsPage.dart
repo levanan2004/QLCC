@@ -1,5 +1,6 @@
 import 'package:apartment_management/Admin/adminPage/apartment_tenant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyButtonSearchToApartmentDetails extends StatefulWidget {
@@ -73,7 +74,7 @@ class _MyButtonSearchToApartmentDetailsState
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Không tìm thấy căn hộ này')),
+            SnackBar(content: Text("Không tìm thấy phòng này").tr()),
           );
         }
       },
@@ -107,7 +108,7 @@ class _MyButtonSearchToApartmentDetailsState
                   width: 20,
                 ),
                 Text(
-                  'Căn hộ ${widget.ApartmentName.toString()}',
+                  "Phòng ".tr() + widget.ApartmentName.toString(),
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 25,

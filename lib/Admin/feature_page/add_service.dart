@@ -2,6 +2,7 @@ import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:apartment_management/User/components/text_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,7 @@ class _MyAddServiceState extends State<MyAddService> {
                     ),
                     //welcome back message
                     Text(
-                      "Nhập thông tin dịch vụ của bạn",
+                      "Nhập thông tin dịch vụ của bạn".tr(),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -71,7 +72,7 @@ class _MyAddServiceState extends State<MyAddService> {
                     // Tháng
                     MyTextFormField(
                         controller: MonthController,
-                        hintText: "Tháng (vd: 1, 2,...)",
+                        hintText: "Tháng (vd: 1, 2,...)".tr(),
                         icon: Icon(Icons.timer_sharp),
                         obscureText: false),
                     const SizedBox(
@@ -81,7 +82,7 @@ class _MyAddServiceState extends State<MyAddService> {
                     RequiredTextForm(
                         maxLine: 12,
                         controller: ServiceNameController,
-                        hintText: "Tên Dịch Vụ (vd: Tiền Rác,..)",
+                        hintText: "Tên Dịch Vụ (vd: Tiền Rác,..)".tr(),
                         icon: Icon(Icons.ballot_rounded),
                         obscureText: false),
                     const SizedBox(
@@ -145,13 +146,13 @@ class _MyAddServiceState extends State<MyAddService> {
             Navigator.pop(context);
           } else {
             AlertDialog(
-              content: Text("Hãy nhập đủ khung"),
+              content: Text("Hãy nhập đủ khung".tr()),
             );
           }
         }
       },
       child: MyButton(
-        text: "Thêm",
+        text: "Thêm".tr(),
         color: Colors.black,
         colorText: Colors.white,
       ),

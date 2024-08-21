@@ -2,6 +2,7 @@ import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/email_textformf.dart';
 import 'package:apartment_management/User/components/number_textform.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -74,7 +75,8 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
               builder: (context) => AlertDialog(
                     title: Center(
                       child: Text(
-                        'Không tìm thấy phòng, do chưa có người ở. Bạn vui lòng xóa Phòng vừa tạo',
+                        "Không tìm thấy phòng, do chưa có người ở. Bạn vui lòng xóa Phòng vừa tạo"
+                            .tr(),
                         style: TextStyle(
                           color: Colors.black,
                           fontFamily: "Urbanist",
@@ -89,7 +91,8 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
             builder: (context) => AlertDialog(
                   title: Center(
                     child: Text(
-                      'Không tìm thấy Tầng, do chưa có người ở. Bạn vui lòng xóa Phòng vừa tạo',
+                      "Không tìm thấy Tầng, do chưa có người ở. Bạn vui lòng xóa Phòng vừa tạo"
+                          .tr(),
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: "Urbanist",
@@ -181,14 +184,14 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Thông báo'),
-                        content: Text('Tháng này đã tồn tại'),
+                        title: Text("Thông báo".tr()),
+                        content: Text("Tháng này đã tồn tại".tr()),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text('Đóng'),
+                            child: Text("Đóng".tr()),
                           ),
                         ],
                       );
@@ -243,15 +246,16 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Thông báo'),
+                title: Text("Thông báo").tr(),
                 content: Text(
-                    'Tháng này bạn đã ghi biên lai dịch vụ cho căn hộ ${ApartmentNameController.text}'),
+                    "Tháng này bạn đã ghi biên lai dịch vụ cho căn hộ ".tr() +
+                        ApartmentNameController.text),
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('OK'),
+                    child: Text("Đóng").tr(),
                   ),
                 ],
               );
@@ -330,7 +334,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     ),
                     //welcome back message
                     Text(
-                      "Thêm dịch vụ " + widget.idServiceName,
+                      "Thêm dịch vụ ".tr() + widget.idServiceName,
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -344,7 +348,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     // Tên Tòa Nhà Chung Cư
                     NumberTextForm(
                         controller: ApartmentNameController,
-                        hintText: "Tên Căn Hộ (vd: 1, 2, 50,...)",
+                        hintText: "Tên Căn Hộ (vd: 1, 2, 50,...)".tr(),
                         icon: Icon(Icons.home_outlined),
                         obscureText: false),
                     const SizedBox(
@@ -353,7 +357,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     // Tên Tòa Nhà Chung Cư
                     NumberTextForm(
                         controller: FloorController,
-                        hintText: "Tầng Của Căn Hộ (vd: 1, 2,...)",
+                        hintText: "Tầng Của Căn Hộ (vd: 1, 2,...)".tr(),
                         icon: Icon(Icons.elevator),
                         obscureText: false),
                     const SizedBox(
@@ -361,7 +365,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     ),
                     EmailTextForm(
                         controller: TenantEmailController,
-                        hintText: "Email người chủ thuê phòng",
+                        hintText: "Email người thuê phòng".tr(),
                         icon: Icon(Icons.email),
                         obscureText: false),
                     const SizedBox(
@@ -370,7 +374,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     // Tên Chủ Nhà
                     NumberTextForm(
                         controller: UnitController,
-                        hintText: "Số đơn vị sử dụng (vd: 1500)",
+                        hintText: "Số đơn vị sử dụng (vd: 1500)".tr(),
                         icon: Icon(Icons.numbers),
                         obscureText: false),
                     const SizedBox(
@@ -378,7 +382,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     ),
                     NumberTextForm(
                         controller: MoneyController,
-                        hintText: "Tổng số tiền phải trả",
+                        hintText: "Tổng số tiền phải trả".tr(),
                         icon: Icon(Icons.monetization_on),
                         obscureText: false),
                     const SizedBox(
@@ -394,7 +398,7 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
                     GestureDetector(
                       onTap: addDataSR,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

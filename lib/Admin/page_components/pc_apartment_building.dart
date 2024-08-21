@@ -2,6 +2,7 @@ import 'package:apartment_management/Admin/adminPage/floor_service/floor_service
 import 'package:apartment_management/Admin/components/con_apartmentBuilding.dart';
 import 'package:apartment_management/Admin/feature_page/add_apartment_building.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +68,8 @@ class _EApartmentBuildingState extends State<EApartmentBuilding> {
             if (snapshot.data!.isEmpty) {
               return AlertDialog(
                 content: Text(
-                  'Hãy thêm Toà Nhà Chung Cư hay Nhà Trọ để bắt đầu quản lý',
+                  "Hãy thêm Toà Nhà Chung Cư hay Nhà Trọ để bắt đầu quản lý"
+                      .tr(),
                   style: TextStyle(
                     fontFamily: 'Urbanist',
                     color: Colors.black,
@@ -77,7 +79,7 @@ class _EApartmentBuildingState extends State<EApartmentBuilding> {
                 ),
                 actions: <Widget>[
                   TextButton(
-                    child: Text('OK'),
+                    child: Text("Đóng").tr(),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -117,7 +119,7 @@ class _EApartmentBuildingState extends State<EApartmentBuilding> {
           } else {
             return Center(
               child: Text(
-                'Hãy tạo 1 Tòa nhà chung cư / Nhà trọ của riêng',
+                "Hãy tạo 1 Tòa nhà chung cư / Nhà trọ của riêng".tr(),
                 style: TextStyle(color: Colors.white),
               ),
             );

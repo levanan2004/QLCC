@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyContainerServiceMonth extends StatelessWidget {
@@ -22,7 +23,7 @@ class MyContainerServiceMonth extends StatelessWidget {
               color: Color.fromARGB(255, 149, 208, 238)),
           margin:
               const EdgeInsets.only(top: 25, left: 25, right: 5, bottom: 30),
-          child: Text("Tháng " + Month.toString(),
+          child: Text("Tháng ".tr() + Month.toString(),
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

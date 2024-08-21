@@ -2,6 +2,7 @@ import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/components/u_con_service.dart';
 import 'package:apartment_management/User/page/room_service/u_service_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,7 @@ class _User_Service_SBState extends State<User_Service_SB> {
               if (snapshot.data!.docs.isEmpty) {
                 // No data found, display message
                 return Center(
-                  child: Text('Hãy báo chủ căn hộ thêm dịch vụ cho bạn'),
+                  child: Text("Hãy báo chủ căn hộ thêm dịch vụ cho bạn".tr()),
                 );
               } else {
                 return ListView.builder(

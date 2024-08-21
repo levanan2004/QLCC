@@ -31,6 +31,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+        // Enable lint warnings for deprecated API usage
+        lintOptions {
+            checkReleaseBuilds true
+            abortOnError false
+            lintConfig file("lint.xml")
+        }
     }
 
     defaultConfig {
@@ -38,7 +44,7 @@ android {
         applicationId = "com.example.apartment_management"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = 23
+        minSdk = 28
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
@@ -52,7 +58,12 @@ android {
         }
     }
 }
+dependencies {
+    implementation 'com.google.android.gms:play-services-ads:23.3.0'
+    // Các phụ thuộc khác
+}
 
 flutter {
     source = "../.."
 }
+apply plugin: 'com.google.gms.google-services'

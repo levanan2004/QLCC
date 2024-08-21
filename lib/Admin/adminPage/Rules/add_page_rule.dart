@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -63,11 +64,11 @@ class _AddRulesPageState extends State<AddRulesPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Nhập Không Đầy Đủ'),
-              content: Text('Xin vui lòng hãy nhập đủ 3 ô'),
+              title: Text("Nhập Không Đầy Đủ").tr(),
+              content: Text("Xin vui lòng hãy nhập đủ 3 ô".tr()),
               actions: [
                 TextButton(
-                  child: Text('Vâng'),
+                  child: Text("Đóng").tr(),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -116,7 +117,7 @@ class _AddRulesPageState extends State<AddRulesPage> {
                       height: 25,
                     ),
                     //welcome back message
-                    Text('Thêm nội quy',
+                    Text("Thêm nội quy".tr(),
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 30.0,
@@ -129,7 +130,7 @@ class _AddRulesPageState extends State<AddRulesPage> {
                     // STT nội quy
                     RequiredTextForm(
                       controller: numberController,
-                      hintText: "STT nội quy(vd: 1,..)",
+                      hintText: "STT nội quy(vd: 1,..)".tr(),
                       icon: Icon(Icons.numbers),
                       obscureText: false,
                       maxLine: 2,
@@ -140,7 +141,7 @@ class _AddRulesPageState extends State<AddRulesPage> {
                     // Nội dung nội quy
                     RequiredTextForm(
                       controller: contentController,
-                      hintText: "Nội dung nội quy",
+                      hintText: "Nội dung nội quy".tr(),
                       icon: Icon(Icons.mode_edit_outline_outlined),
                       obscureText: false,
                       maxLine: 40,
@@ -150,7 +151,7 @@ class _AddRulesPageState extends State<AddRulesPage> {
                     ),
                     RequiredTextForm(
                       controller: finedController,
-                      hintText: "Hình phạt",
+                      hintText: "Hình phạt".tr(),
                       icon: Icon(Icons.gavel),
                       obscureText: false,
                       maxLine: 40,
@@ -162,7 +163,7 @@ class _AddRulesPageState extends State<AddRulesPage> {
                     GestureDetector(
                       onTap: addRules,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

@@ -1,5 +1,6 @@
 import 'package:apartment_management/User/components/text_box.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +13,14 @@ class MyAccount extends StatefulWidget {
 
 class _MyAccountState extends State<MyAccount> {
   final email = FirebaseAuth.instance.currentUser!.email;
-  Future<void> editField(String field) async {
+  Future<void> editField(String field, fieldInfo) async {
     String newValue = "";
     await showDialog(
         context: context,
         builder: (context) => AlertDialog(
               backgroundColor: Colors.white,
               title: Text(
-                "Chỉnh sửa $field",
+                "Chỉnh sửa ".tr() + fieldInfo,
                 style: const TextStyle(
                     color: Colors.black, fontFamily: "Urbanist"),
               ),
@@ -28,7 +29,7 @@ class _MyAccountState extends State<MyAccount> {
                 style: const TextStyle(
                     color: Colors.black, fontFamily: "Urbanist"),
                 decoration: InputDecoration(
-                    hintText: "Nhập dữ liệu",
+                    hintText: "Nhập thông tin".tr(),
                     hintStyle: const TextStyle(
                         color: Colors.black, fontFamily: "Urbanist")),
                 onChanged: (value) => {newValue = value},
@@ -37,14 +38,14 @@ class _MyAccountState extends State<MyAccount> {
                 TextButton(
                     onPressed: () => Navigator.pop(context),
                     child: Text(
-                      "Hủy",
+                      "Hủy".tr(),
                       style: const TextStyle(
                           color: Colors.black, fontFamily: "Urbanist"),
                     )),
                 TextButton(
                     onPressed: () => Navigator.of(context).pop(newValue),
                     child: Text(
-                      "Lưu",
+                      "Lưu".tr(),
                       style: const TextStyle(
                           color: Colors.black, fontFamily: "Urbanist"),
                     ))
@@ -62,17 +63,18 @@ class _MyAccountState extends State<MyAccount> {
           showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                    title: Text("Cách thức nhập sai",
+                    title: Text("Cách thức nhập sai".tr(),
                         style: const TextStyle(
                             color: Colors.black, fontFamily: "Urbanist")),
-                    content: Text("\nNhập 1: nếu là nam \nNhập 0: nếu là nữ",
+                    content: Text(
+                        "\nNhập 1: nếu là nam \nNhập 0: nếu là nữ".tr(),
                         style: const TextStyle(
                             color: Colors.black, fontFamily: "Urbanist")),
                     actions: [
                       TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Text(
-                            "Vâng",
+                            "Đóng".tr(),
                             style: const TextStyle(
                                 color: Colors.black, fontFamily: "Urbanist"),
                           ))
@@ -92,13 +94,14 @@ class _MyAccountState extends State<MyAccount> {
   // sign out
   void signOut() {
     FirebaseAuth.instance.signOut();
+    Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tài khoản"),
+        title: Text("Tài Khoản".tr()),
       ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
@@ -111,10 +114,11 @@ class _MyAccountState extends State<MyAccount> {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
-            return Center(child: Text('Đã xảy ra lỗi'));
+            return Center(child: Text("Đã xảy ra lỗi").tr());
           }
           if (!snapshot.hasData || !snapshot.data!.exists) {
-            return Center(child: Text('Không tìm thấy thông tin tài khoản'));
+            return Center(
+                child: Text("Không tìm thấy thông tin tài khoản").tr());
           }
 
           var userData = snapshot.data!.data() as Map<String, dynamic>;
@@ -140,36 +144,43 @@ class _MyAccountState extends State<MyAccount> {
                 height: 20,
               ),
               MyTextBox(
-                  sectionName: "Họ Tên",
+                  sectionName: "Họ tên".tr(),
                   text: userData['username'] ?? "...",
-                  onPressed: () => editField('username')),
-              MyTextBox(
-                  sectionName: "Vai Trò", text: userData['role'] ?? "..."),
-              MyTextBox(
-                  sectionName: "Giới Tính",
-                  text: userData['Sex'] ?? "...",
-                  onPressed: () => editField('Sex')),
+                  onPressed: () => editField('username', "Họ tên".tr())),
+              (userData['role'] == "1")
+                  ? MyTextBox(sectionName: "Vai trò".tr(), text: "Quản lý".tr())
+                  : MyTextBox(
+                      sectionName: "Vai trò".tr(), text: "Người thuê".tr()),
+              (userData['Sex'] == "1")
+                  ? MyTextBox(
+                      sectionName: "Giới tính".tr(),
+                      text: "Nam".tr(),
+                      onPressed: () => editField('Sex', "Giới tính".tr()))
+                  : MyTextBox(
+                      sectionName: "Giới tính".tr(),
+                      text: "Nữ".tr(),
+                      onPressed: () => editField('Sex', "Giới tính".tr())),
               MyTextBox(sectionName: "Email", text: userData['email'] ?? "..."),
               MyTextBox(
-                sectionName: "Số Điện Thoại",
+                sectionName: "Số điện thoại".tr(),
                 text: userData['Phone'] ?? "...",
               ),
               MyTextBox(
-                  sectionName: "Căn Cước Công Dân",
+                  sectionName: "Căn Cước Công Dân".tr(),
                   text: userData['CCCD'] ?? "...",
-                  onPressed: () => editField('CCCD')),
+                  onPressed: () => editField('CCCD', "Căn cước công dân".tr())),
               MyTextBox(
-                  sectionName: "Đia Chỉ",
+                  sectionName: "Địa chỉ".tr(),
                   text: userData['Address'] ?? "...",
-                  onPressed: () => editField('Address')),
+                  onPressed: () => editField('Address', "Địa chỉ".tr())),
               MyTextBox(
-                sectionName: "Mã Giới Thiệu",
+                sectionName: "Mã giới thiệu".tr(),
                 text: userData['CODE'] ?? "...",
               ),
               SizedBox(height: 50),
               ListTile(
                 leading: Icon(Icons.logout),
-                title: Text('Đăng Xuất',
+                title: Text("Đăng Xuất".tr(),
                     style: TextStyle(
                         fontFamily: "Urbanist",
                         fontSize: 20,

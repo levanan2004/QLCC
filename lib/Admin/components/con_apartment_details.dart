@@ -1,5 +1,6 @@
 import 'package:apartment_management/Admin/components/deleteIcon.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyContainerApartmentDetails extends StatelessWidget {
@@ -30,14 +31,14 @@ class MyContainerApartmentDetails extends StatelessWidget {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: const Text("Delete Post"),
-                content:
-                    const Text("Are you sure you want to delete this post?"),
+                title: Text("Xóa Người thuê".tr()),
+                content: const Text("Bạn có chắc chắn muốn xóa người thuê này?")
+                    .tr(),
                 actions: [
                   // CANCEL BUTTON
                   TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text("Cancel")),
+                      child: const Text("Hủy").tr()),
 
                   // DELETE BUTTON
                   TextButton(
@@ -61,7 +62,7 @@ class MyContainerApartmentDetails extends StatelessWidget {
                           print('Error deleting tenant: $e');
                         }
                       },
-                      child: const Text("Sure")),
+                      child: const Text("Chắc chắn").tr()),
                 ],
               ));
     }
@@ -102,7 +103,7 @@ class MyContainerApartmentDetails extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                   Text(
-                    Sex.toString() == "1" ? "Nam" : "Nữ",
+                    Sex.toString() == "1" ? "Nam".tr() : "Nữ".tr(),
                     style: TextStyle(color: Colors.white),
                   ),
                 ],

@@ -1,5 +1,6 @@
 import 'package:apartment_management/Admin/adminPage/violate/add_violate_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ItemUserManagement extends StatefulWidget {
@@ -98,7 +99,8 @@ class Item_UserManagementState extends State<ItemUserManagement> {
                           color: widget.role == "2" ? Colors.red : Colors.green,
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                          child: Text(widget.role == "2" ? 'Khóa' : 'Mở Khóa',
+                          child: Text(
+                              widget.role == "2" ? "Khóa".tr() : "Mở Khóa".tr(),
                               style: TextStyle(color: Colors.white))),
                     ),
                   ),
@@ -116,7 +118,7 @@ class Item_UserManagementState extends State<ItemUserManagement> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                           child: Text(
-                        'Vi phạm',
+                        "Vi Phạm".tr(),
                         style: TextStyle(color: Colors.white),
                       )),
                     ),
@@ -144,7 +146,7 @@ class Item_UserManagementState extends State<ItemUserManagement> {
             children: [
               Expanded(
                 child: Text(
-                  'Giới tính: ${widget.sex}',
+                  "Giới tính: ".tr() + widget.sex,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],
@@ -158,7 +160,7 @@ class Item_UserManagementState extends State<ItemUserManagement> {
             children: [
               Expanded(
                 child: Text(
-                  'Số điện thoại: ${widget.phone}',
+                  "Số điện thoại: ".tr() + widget.phone,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],
@@ -172,7 +174,7 @@ class Item_UserManagementState extends State<ItemUserManagement> {
             children: [
               Expanded(
                 child: Text(
-                  'Địa chỉ: ${widget.address}',
+                  "Địa chỉ: ".tr() + widget.address,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],
@@ -186,7 +188,7 @@ class Item_UserManagementState extends State<ItemUserManagement> {
             children: [
               Expanded(
                 child: Text(
-                  'CCCD: ${widget.CCCD}',
+                  "CCCD: " + widget.CCCD,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],

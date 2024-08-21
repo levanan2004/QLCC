@@ -1,7 +1,8 @@
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/components/text_post.dart';
-import 'package:apartment_management/User/page/message/item_message.dart';
+import 'package:apartment_management/User/page/drawer/message/item_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,6 @@ class MyMessage extends StatefulWidget {
 class _MyMessageState extends State<MyMessage> {
   String email = FirebaseAuth.instance.currentUser!.email!;
   String? code;
-
   // Text controller
   final textController = TextEditingController();
   @override
@@ -73,7 +73,7 @@ class _MyMessageState extends State<MyMessage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "Tin nhắn",
+          "Tin Nhắn".tr(),
           style: TextStyle(
             color: Colors.black,
             fontSize: 25,
@@ -127,7 +127,7 @@ class _MyMessageState extends State<MyMessage> {
                   Expanded(
                     child: MyTextFieldPost(
                       controller: textController,
-                      hintText: "Nhập tin nhắn",
+                      hintText: "Nhập tin nhắn".tr(),
                       obscureText: false,
                     ),
                   ),

@@ -8,6 +8,7 @@ import 'package:apartment_management/Auth/forget_password_page.dart';
 import 'package:apartment_management/User/components/sex_textformf.dart';
 import 'package:apartment_management/User/components/square_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
               .doc(userDoc.id)
               .collection('Notifications')
               .add({
-            'Title': 'Người dùng ${email} vừa đăng ký tài khoản!',
+            'Title': "Người dùng ${email} vừa đăng ký tài khoản!",
             'Content': 'Hãy mau sắp xếp chỗ ở cho người dùng ${email}',
             'UserEmail': email,
             'Status': false,
@@ -81,7 +82,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
       Navigator.pop(context);
 
       // show error to user
-      displayMessage("Mật khẩu không trùng nhau");
+      displayMessage("Mật khẩu không trùng nhau".tr());
       return;
     }
 
@@ -103,7 +104,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
         Navigator.pop(context);
 
         // Hiển thị thông báo lỗi nếu mã không tồn tại
-        displayMessage("CODE bạn nhập sai!");
+        displayMessage("CODE bạn nhập sai!".tr());
         return;
       }
       // </code - kết thúc>
@@ -194,12 +195,12 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     RequiredTextForm(
                         maxLine: 20,
                         controller: userNameTextController,
-                        hintText: "Tên Người dùng",
+                        hintText: "Tên Người dùng".tr(),
                         icon: Icon(Icons.person),
                         obscureText: false),
                     EmailTextForm(
                         controller: emailTextController,
-                        hintText: "Email",
+                        hintText: "Email".tr(),
                         icon: Icon(Icons.email),
                         obscureText: false),
                     const SizedBox(
@@ -208,13 +209,13 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     RequiredTextForm(
                         maxLine: 14,
                         controller: CodeController,
-                        hintText: "Nhập mã code",
+                        hintText: "Nhập mã code".tr(),
                         icon: Icon(Icons.code),
                         obscureText: false), // Số Điện Thoại
                     RequiredTextForm(
                         maxLine: 12,
                         controller: PhoneController,
-                        hintText: "Số điện thoại",
+                        hintText: "Số điện thoại".tr(),
                         icon: Icon(Icons.phone_android),
                         obscureText: false),
                     const SizedBox(
@@ -223,7 +224,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     // Ấp, Xã
                     SexTextForm(
                       controller: SexController,
-                      hintText: "Nam: 1, Nữ: 0",
+                      hintText: "Nam: 1, Nữ: 0".tr(),
                       icon: Icon(Icons.female),
                       obscureText: false,
                     ),
@@ -234,7 +235,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     RequiredTextForm(
                         maxLine: 30,
                         controller: AddressController,
-                        hintText: "Địa chỉ",
+                        hintText: "Địa chỉ".tr(),
                         icon: Icon(Icons.location_on),
                         obscureText: false),
                     const SizedBox(
@@ -244,17 +245,17 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     RequiredTextForm(
                         maxLine: 12,
                         controller: CCCDController1,
-                        hintText: "Căn Cước Công Dân",
+                        hintText: "Căn Cước Công Dân".tr(),
                         icon: Icon(Icons.assignment_ind_rounded),
                         obscureText: false),
                     PasswordTextForm(
                         controller: passwordTextController,
-                        hintText: "Mật khẩu",
+                        hintText: "Mật khẩu".tr(),
                         icon: Icon(Icons.lock),
                         obscureText: true),
                     PasswordTextForm(
                         controller: confirmPasswordTextController,
-                        hintText: "Nhập lại mật khẩu",
+                        hintText: "Nhập lại mật khẩu".tr(),
                         icon: Icon(Icons.lock_reset_sharp),
                         obscureText: true),
                     const SizedBox(
@@ -269,7 +270,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     GestureDetector(
                       onTap: signUp,
                       child: MyButton(
-                        text: "Đăng ký",
+                        text: "Đăng ký".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),
@@ -300,8 +301,8 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => ForgetPassword()));
           },
-          child: const Text(
-            "Quên mật khẩu?",
+          child: Text(
+            "Quên mật khẩu?".tr(),
             style: TextStyle(
                 fontFamily: 'Urbanist',
                 fontWeight: FontWeight.bold,
@@ -316,7 +317,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Bạn đã có tài khoản? ",
+        Text("Bạn đã có tài khoản? ".tr(),
             style: TextStyle(
               fontFamily: 'Urbanist',
               fontSize: 15,
@@ -324,8 +325,8 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
             )),
         GestureDetector(
           onTap: widget.onTap,
-          child: const Text(
-            " Đăng nhập, ngay!",
+          child: Text(
+            " Đăng nhập, ngay!".tr(),
             style: TextStyle(
                 fontFamily: 'Urbanist',
                 fontSize: 15,
@@ -351,7 +352,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                "Hoặc đăng nhập với",
+                "Hoặc đăng nhập với".tr(),
                 style: TextStyle(
                   fontFamily: 'Urbanist',
                   fontSize: 14,
@@ -387,15 +388,16 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Chức Năng Chưa Hoàn Thiện'),
+                        title: Text("Chức Năng Chưa Hoàn Thiện").tr(),
                         content: Text(
-                            'Bạn vui lòng thử lại sau, chức năng hiện tại chưa hoàn thiện'),
+                                "Bạn vui lòng thử lại sau, chức năng hiện tại chưa hoàn thiện")
+                            .tr(),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text('Đóng'),
+                            child: Text("Đóng").tr(),
                           ),
                         ],
                       );

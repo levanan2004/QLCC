@@ -2,6 +2,7 @@ import 'package:apartment_management/Admin/adminPage/Rules/add_page_rule.dart';
 import 'package:apartment_management/Admin/adminPage/Rules/item_rules.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +84,7 @@ class _RulesPageState extends State<RulesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nội Quy',
+        title: Text("Nội Quy".tr(),
             style: TextStyle(
                 fontSize: 30, fontFamily: "Urbanist", color: Colors.black)),
       ),

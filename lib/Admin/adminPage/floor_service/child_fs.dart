@@ -3,8 +3,9 @@ import 'package:apartment_management/Admin/adminPage/user_management/user_manage
 import 'package:apartment_management/Admin/adminPage/violate/page_violate.dart';
 import 'package:apartment_management/Admin/page_components/pc_floor.dart';
 import 'package:apartment_management/Admin/page_components/pc_service.dart';
-import 'package:apartment_management/User/page/account_page.dart';
-import 'package:apartment_management/User/page/message/page_message.dart';
+import 'package:apartment_management/User/page/drawer/account_page.dart';
+import 'package:apartment_management/User/page/drawer/message/page_message.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ChildFloorService extends StatefulWidget {
@@ -29,7 +30,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
             SizedBox(
               width: 20,
             ),
-            Text("Tầng: ",
+            Text("Tầng: ".tr(),
                 style: TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
@@ -54,7 +55,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
             SizedBox(
               width: 20,
             ),
-            Text("Dịch vụ: ",
+            Text("Dịch vụ: ".tr(),
                 style: TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
@@ -109,7 +110,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Tài Khoản',
+                            "Tài Khoản".tr(),
                             style: TextStyle(
                                 color: Colors.brown[400],
                                 fontSize: 20,
@@ -152,7 +153,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             width: 20,
                           ),
                           Text(
-                            'Quản Lý',
+                            "Quản lý".tr(),
                             style: TextStyle(
                                 color: Colors.deepOrange,
                                 fontSize: 20,
@@ -194,7 +195,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             width: 20,
                           ),
                           Text(
-                            'Tin Nhắn',
+                            "Tin Nhắn".tr(),
                             style: TextStyle(
                                 color: Colors.deepPurple,
                                 fontSize: 20,
@@ -239,7 +240,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             width: 20,
                           ),
                           Text(
-                            'Vi Phạm',
+                            "Vi Phạm".tr(),
                             style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 20,
@@ -281,7 +282,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             width: 20,
                           ),
                           Text(
-                            'Nội Quy',
+                            "Nội Quy".tr(),
                             style: TextStyle(
                                 color: Colors.greenAccent,
                                 fontSize: 20,

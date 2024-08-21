@@ -2,6 +2,7 @@ import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/components/u_con_aTenant_details.dart';
 import 'package:apartment_management/User/page/room_service/u_apartment_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +50,8 @@ class _User_SBRoomTenantState extends State<User_SBRoomTenant> {
                 // No data found, display message
                 return Center(
                   child: Text(
-                      'User đã có dữ liệu mặc định nhưng chưa được Chủ thêm vào phòng'),
+                      "User đã có dữ liệu mặc định nhưng chưa được Chủ thêm vào phòng"
+                          .tr()),
                 );
               } else {
                 // Data available, display rooms or message
@@ -66,7 +68,8 @@ class _User_SBRoomTenantState extends State<User_SBRoomTenant> {
                           ),
                           Center(
                               child: Text(
-                                  'Hãy báo với chủ hộ thêm cho bạn vào phòng')),
+                                  "Hãy báo với chủ hộ thêm cho bạn vào phòng"
+                                      .tr())),
                         ],
                       );
                     } else {
@@ -77,7 +80,7 @@ class _User_SBRoomTenantState extends State<User_SBRoomTenant> {
                           indexOfRT['idApartment'],
                           indexOfRT['idApartmentName'],
                         ),
-                        text: "Phòng",
+                        text: "Phòng ".tr(),
                         colorText: Color.fromARGB(255, 163, 214, 184),
                         colorContainer: Color.fromARGB(255, 163, 214, 184),
                         icon: Icon(

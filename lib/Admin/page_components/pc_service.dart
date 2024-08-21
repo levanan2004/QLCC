@@ -2,6 +2,7 @@ import 'package:apartment_management/Admin/adminPage/service_page.dart';
 import 'package:apartment_management/Admin/components/con_service.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SBService extends StatefulWidget {
@@ -34,13 +35,13 @@ class _SBServiceState extends State<SBService> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: const Text("Xóa dịch vụ"),
-                content: const Text("Bạn có chắc chắn muốn xóa dịch vụ này?"),
+                title: Text("Xóa dịch vụ".tr()),
+                content: Text("Bạn có chắc chắn muốn xóa dịch vụ này?").tr(),
                 actions: [
                   // CANCEL BUTTON
                   TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text("Hủy")),
+                      child: Text("Hủy".tr())),
 
                   // DELETE BUTTON
                   TextButton(

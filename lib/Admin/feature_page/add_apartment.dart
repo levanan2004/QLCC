@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -53,11 +54,11 @@ class _MyAddAState extends State<MyAddA> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Phòng này đã tồn tại'),
-                content: Text('Một phòng cùng tên đã tồn tại ở tầng này.'),
+                title: Text("Phòng này đã tồn tại".tr()),
+                content: Text("Một phòng cùng tên đã tồn tại ở tầng này.".tr()),
                 actions: [
                   TextButton(
-                    child: Text('OK'),
+                    child: Text("Đóng").tr(),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -122,7 +123,7 @@ class _MyAddAState extends State<MyAddA> {
                     ),
                     //welcome back message
                     Text(
-                      "Nhập Thông Tin Phòng",
+                      "Nhập Thông Tin Phòng".tr(),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -137,7 +138,7 @@ class _MyAddAState extends State<MyAddA> {
                     RequiredTextForm(
                         maxLine: 2,
                         controller: ApartmentNameController,
-                        hintText: "Nhập số phòng(vd: 1,..)",
+                        hintText: "Nhập số phòng(vd: 1,..)".tr(),
                         icon: Icon(Icons.home_outlined),
                         obscureText: false),
                     const SizedBox(
@@ -147,7 +148,7 @@ class _MyAddAState extends State<MyAddA> {
                     RequiredTextForm(
                         maxLine: 3,
                         controller: AreaController,
-                        hintText: "Diện tích nhà (m²)",
+                        hintText: "Diện tích phòng (m²)".tr(),
                         icon: Icon(Icons.home),
                         obscureText: false),
                     const SizedBox(
@@ -157,7 +158,7 @@ class _MyAddAState extends State<MyAddA> {
                     RequiredTextForm(
                         maxLine: 1,
                         controller: PersonController,
-                        hintText: "Số lượng người (vd: 3,..)",
+                        hintText: "Số lượng người (vd: 3,..)".tr(),
                         icon: Icon(Icons.group),
                         obscureText: false),
                     const SizedBox(
@@ -167,7 +168,7 @@ class _MyAddAState extends State<MyAddA> {
                     GestureDetector(
                       onTap: addDataAB,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

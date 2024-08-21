@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/page/room_service/u_month_tenant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class User_MyServicePage extends StatefulWidget {
@@ -41,7 +42,7 @@ class _User_MyServicePageState extends State<User_MyServicePage> {
         return idServiceMonth;
       } else {
         // No documents found, throw an error
-        throw Exception("No service month found");
+        throw Exception("Không tìm thấy tháng dịch vụ".tr());
       }
     } catch (e) {
       print("Error fetching initial month: $e");

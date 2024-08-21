@@ -1,5 +1,6 @@
 import 'package:apartment_management/Admin/feature_page/add_apartment.dart';
 import 'package:apartment_management/Admin/page_components/pc_apartment.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyRoomPage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _MyRoomPageState extends State<MyRoomPage> {
                     SizedBox(
                       width: 20,
                     ),
-                    Text("Tầng " + widget.Floor.toString() + ": ",
+                    Text("Tầng ".tr() + widget.Floor.toString() + ": ",
                         style: TextStyle(
                             color: Colors.black87,
                             fontSize: 25,
@@ -51,17 +52,16 @@ class _MyRoomPageState extends State<MyRoomPage> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text('Cách thêm Phòng'),
+                                title: Text("Cách thêm Phòng".tr()),
                                 content: Text(
-                                  'Không được thêm như: Tầng 1 phòng 1 hay Tầng 2 phòng 1\n\n'
-                                  'Phải thêm Tầng 2 bắt đầu từ số phòng cuối cùng của tầng 1,\n ví dụ: phòng cuối tầng 1 là 15 thì tầng 2 bắt đầu ở phòng 16.',
-                                ),
+                                        "Không được thêm như: Tầng 1 phòng 1 hay Tầng 2 phòng 1\n\nPhải thêm Tầng 2 bắt đầu từ số phòng cuối cùng của tầng 1,\n ví dụ: phòng cuối tầng 1 là 15 thì tầng 2 bắt đầu ở phòng 16.")
+                                    .tr(),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: Text('Đóng'),
+                                    child: Text("Đóng").tr(),
                                   ),
                                 ],
                               );
@@ -133,8 +133,8 @@ class _MyRoomPageState extends State<MyRoomPage> {
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-          Colors.black.withOpacity(.6),
-          Colors.black.withOpacity(.1)
+          Colors.black.withOpacity(.8),
+          Colors.black.withOpacity(.3)
         ])),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -165,34 +165,22 @@ class _MyRoomPageState extends State<MyRoomPage> {
               height: 70,
             ),
             Text(
-              "Bạn muốn tìm căn hộ?",
+              "Hãy chọn 1 căn phòng".tr(),
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    offset: Offset(2.0, 2.0),
+                    blurRadius: 5.0,
+                    color: Colors.black.withOpacity(0.5),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
-              height: 30,
-            ),
-            Container(
-                padding: EdgeInsets.symmetric(vertical: 3),
-                margin: EdgeInsets.symmetric(horizontal: 40),
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.white),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey,
-                      ),
-                      hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
-                      hintText: 'Nhập số phòng bạn muốn tìm (vd: 1,2,...)'),
-                )),
-            SizedBox(
-              height: 30,
+              height: 110,
             ),
           ],
         ),

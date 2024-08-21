@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyContainerApartmentBuilding extends StatelessWidget {
@@ -61,7 +62,7 @@ class MyContainerApartmentBuilding extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  "Tên: " + apartmentBuildingName,
+                  "Tên: ".tr() + apartmentBuildingName,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,

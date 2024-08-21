@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -54,11 +55,11 @@ class _AddViolatePageState extends State<AddViolatePage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Nhập Không Đầy Đủ'),
-              content: Text('Xin vui lòng hãy nhập đủ 3 ô'),
+              title: Text("Nhập Không Đầy Đủ").tr(),
+              content: Text("Xin vui lòng hãy nhập đủ 3 ô").tr(),
               actions: [
                 TextButton(
-                  child: Text('Vâng'),
+                  child: Text("Đóng").tr(),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -109,7 +110,7 @@ class _AddViolatePageState extends State<AddViolatePage> {
                     //welcome back message
                     RichText(
                       text: TextSpan(
-                        text: 'Người dùng ',
+                        text: "Người thuê ".tr(),
                         style: TextStyle(
                             fontSize: 30.0,
                             color: Colors.black,
@@ -125,7 +126,7 @@ class _AddViolatePageState extends State<AddViolatePage> {
                                 fontFamily: "Urbanist"),
                           ),
                           TextSpan(
-                            text: '\nvi phạm nội quy',
+                            text: "\nvi phạm nội quy".tr(),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 30.0,
@@ -142,7 +143,7 @@ class _AddViolatePageState extends State<AddViolatePage> {
                     // Tên Tòa Nhà Chung Cư
                     RequiredTextForm(
                       controller: titleController,
-                      hintText: "Tiêu đề lỗi",
+                      hintText: "Tiêu đề lỗi".tr(),
                       icon: Icon(Icons.label_outline),
                       obscureText: false,
                       maxLine: 20,
@@ -153,7 +154,7 @@ class _AddViolatePageState extends State<AddViolatePage> {
                     // Tên Tòa Nhà Chung Cư
                     RequiredTextForm(
                       controller: contentController,
-                      hintText: "Nội dung lỗi",
+                      hintText: "Nội dung lỗi".tr(),
                       icon: Icon(Icons.article),
                       obscureText: false,
                       maxLine: 50,
@@ -163,7 +164,7 @@ class _AddViolatePageState extends State<AddViolatePage> {
                     ),
                     RequiredTextForm(
                       controller: finedController,
-                      hintText: "Hình phạt",
+                      hintText: "Hình phạt".tr(),
                       icon: Icon(Icons.gavel),
                       obscureText: false,
                       maxLine: 50,
@@ -175,7 +176,7 @@ class _AddViolatePageState extends State<AddViolatePage> {
                     GestureDetector(
                       onTap: addViolate,
                       child: MyButton(
-                        text: "Thêm",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),

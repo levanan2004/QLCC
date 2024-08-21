@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ItemPageViolate extends StatefulWidget {
@@ -26,6 +27,11 @@ class ItemPageViolate extends StatefulWidget {
 class _ItemPageViolateState extends State<ItemPageViolate> {
   @override
   Widget build(BuildContext context) {
+    // Convert your widget's timestamp to a DateTime object
+    DateTime date = widget.timeStamp.toDate();
+
+// Format the date as a string
+    String formattedDate = DateFormat('dd/MM/yyyy').format(date);
     return Container(
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(20),
@@ -51,7 +57,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Trạng thái: ',
+                "Trạng thái: ".tr(),
                 style: TextStyle(
                     fontSize: 18, fontFamily: "Urbanist", color: Colors.black),
               ),
@@ -68,7 +74,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                       child: Text(
-                    widget.status == true ? "Đã xử lý" : 'Chưa xử lý',
+                    widget.status == true ? "Đã xử lý".tr() : "Chưa xử lý".tr(),
                     style: TextStyle(
                         fontSize: 18,
                         fontFamily: "Urbanist",
@@ -82,7 +88,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
             height: 10,
           ),
           Text(
-            'Tiêu đề: ' + widget.title,
+            "Tiêu đề: ".tr() + widget.title,
             maxLines: 2,
             style: TextStyle(
               fontSize: 22,
@@ -92,7 +98,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
           ),
           SizedBox(height: 15),
           Text(
-            'Nội dung: ' + widget.content,
+            "Nội dung: ".tr() + widget.content,
             style: TextStyle(
               fontSize: 16,
               color: Colors.black87,
@@ -101,7 +107,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
           ),
           SizedBox(height: 15),
           Text(
-            'Hình phạt: ' + widget.fined,
+            "Hình phạt: ".tr() + widget.fined,
             style: TextStyle(
               fontSize: 16,
               color: widget.status == true ? Colors.black : Colors.red,
@@ -121,7 +127,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
                 ),
               ),
               Text(
-                'Thời gian: ${widget.timeStamp.toDate().day}/${widget.timeStamp.toDate().month}/${widget.timeStamp.toDate().year}',
+                "Thời gian: ".tr() + formattedDate,
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.black,

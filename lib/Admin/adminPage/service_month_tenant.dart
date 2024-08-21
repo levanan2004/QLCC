@@ -4,6 +4,7 @@ import 'package:apartment_management/Admin/feature_page/add_service_month.dart';
 import 'package:apartment_management/Admin/page_components/paid_sm_tenant.dart';
 import 'package:apartment_management/Admin/page_components/unpaid_sm_tenant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MonthAparment extends StatefulWidget {
@@ -104,7 +105,7 @@ class _MonthAparmentState extends State<MonthAparment> {
                             );
                           } else {
                             return Center(
-                              child: Text('Hãy thêm dữ liệu'),
+                              child: Text("Hãy thêm dữ liệu".tr()),
                             );
                           }
                         }),
@@ -122,8 +123,8 @@ class _MonthAparmentState extends State<MonthAparment> {
                     children: [
                       Text(
                         MonthOld == 999
-                            ? "Hãy thêm Tháng"
-                            : "Tháng " + MonthOld.toString(),
+                            ? "Hãy thêm Tháng".tr()
+                            : "Tháng ".tr() + MonthOld.toString(),
                         style: TextStyle(
                             color: Color.fromARGB(255, 149, 208, 238),
                             fontSize: 20,
@@ -173,7 +174,7 @@ class _MonthAparmentState extends State<MonthAparment> {
             SizedBox(
               width: 20,
             ),
-            Text("Chưa đóng",
+            Text("Chưa đóng".tr(),
                 style: TextStyle(
                     color: Colors.red,
                     fontSize: 25,
@@ -213,7 +214,7 @@ class _MonthAparmentState extends State<MonthAparment> {
         ),
         // trang này chứa code Layout và lấy dữ liệu Aparments từ Firebase.
         MonthOld == 999
-            ? Center(child: Text('Hãy thêm Căn Hộ'))
+            ? Center(child: Text("Hãy thêm Phòng".tr()))
             : SBServiceTenantUnPaid(
                 idApartmentBuilding: widget.idApartmentBuilding,
                 idServiceAll: widget.idServiceAll,
@@ -249,7 +250,7 @@ class _MonthAparmentState extends State<MonthAparment> {
             SizedBox(
               width: 20,
             ),
-            Text("Đã đóng",
+            Text("Đã đóng".tr(),
                 style: TextStyle(
                     color: Colors.green,
                     fontSize: 25,
@@ -270,7 +271,7 @@ class _MonthAparmentState extends State<MonthAparment> {
         ),
         // trang này chứa code Layout và lấy dữ liệu Aparments từ Firebase.
         MonthOld == 999
-            ? Center(child: Text('Hãy thêm Căn Hộ'))
+            ? Center(child: Text("Hãy thêm Phòng").tr())
             : SBServiceTenantPaid(
                 idApartmentBuilding: widget.idApartmentBuilding,
                 idServiceAll: widget.idServiceAll,

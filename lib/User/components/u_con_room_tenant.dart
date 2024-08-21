@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -40,31 +41,33 @@ class _User_MyContainerServiceMonthTenantState
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Căn Hộ: ${widget.idApartmentName}',
+          Text("Phòng: ".tr() + widget.idApartmentName.toString(),
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.bold)),
           SizedBox(height: 8),
-          Text('Tiền: ${widget.Money} VNĐ',
+          Text("Tiền: ".tr() + widget.Money.toString() + " VNĐ".tr(),
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.bold)),
           SizedBox(height: 8),
-          Text('Đơn vị sử dụng: ${widget.Unit}/kWh',
+          Text("Đơn vị sử dụng: ".tr() + widget.Unit.toString() + " /kWh",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.bold)),
           SizedBox(height: 8),
-          Text('Ngày Đăng: $formattedDate',
+          Text("Ngày Đăng: ".tr() + formattedDate,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.bold)),
           SizedBox(height: 8),
-          Text('Trạng thái: ${widget.Status ? "Đã đóng" : "Chưa đóng"}',
+          Text(
+              "Trạng thái: ".tr() +
+                  '${widget.Status ? "Đã đóng".tr() : "Chưa đóng".tr()}',
               style: TextStyle(
                   color: widget.Status == true
                       ? Colors.black

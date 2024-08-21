@@ -1,5 +1,6 @@
 import 'package:apartment_management/User/page/notification/admin_page_notification.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -103,11 +104,18 @@ class ContainerAnh extends StatelessWidget {
               height: 70,
             ),
             Text(
-              "Bạn muốn tìm căn hộ?",
+              "Bạn muốn tìm phòng?".tr(),
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(2.0, 2.0),
+                      blurRadius: 5.0,
+                      color: Colors.black.withOpacity(0.5),
+                    )
+                  ]),
             ),
             SizedBox(
               height: 30,
@@ -126,7 +134,7 @@ class ContainerAnh extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
-                    hintText: 'Nhập số phòng bạn muốn tìm (vd: 1,2,...)'),
+                    hintText: "Nhập số phòng bạn muốn tìm (vd: 1,2,...)".tr()),
                 onTap: onSearchTap,
               ),
             ),

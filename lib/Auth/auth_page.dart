@@ -4,12 +4,12 @@ import 'package:apartment_management/Auth/register/add_code.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/page/u_home_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,15 +51,15 @@ class AuthPage extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: Text('Tài Khoản Bị Khóa'),
-                        content: Text('Bạn đã bị khóa tài khoản.'),
+                        title: Text("Tài Khoản Bị Khóa").tr(),
+                        content: Text("Bạn đã bị khóa tài khoản.").tr(),
                         actions: [
                           TextButton(
                             onPressed: () {
                               FirebaseAuth.instance.signOut();
                               Navigator.pop(context);
                             },
-                            child: Text('OK'),
+                            child: Text("Đóng").tr(),
                           ),
                         ],
                       ),

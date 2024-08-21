@@ -4,6 +4,7 @@ import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/components/square_tile.dart';
 import 'package:apartment_management/User/components/text_field.dart';
 import 'package:apartment_management/Auth/forget_password_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   //welcome back message
                   Text(
-                    "Chào mừng trở lại!\nRất vui khi thấy bạn!",
+                    "Chào mừng trở lại!\nRất vui khi thấy bạn!".tr(),
                     style: TextStyle(
                       fontFamily: 'Urbanist',
                       color: Color(0xFF1E232C),
@@ -86,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   MyTextFormField(
                       controller: emailTextController,
-                      hintText: "Nhập email",
+                      hintText: "Nhập email".tr(),
                       icon: Icon(Icons.email),
                       obscureText: false),
                   const SizedBox(
@@ -94,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   MyTextFormField(
                       controller: passwordTextController,
-                      hintText: "Nhập mật khẩu",
+                      hintText: "Nhập mật khẩu".tr(),
                       icon: Icon(Icons.lock),
                       obscureText: true),
                   const SizedBox(
@@ -109,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                   GestureDetector(
                     onTap: signIn,
                     child: MyButton(
-                      text: "Đăng nhập",
+                      text: "Đăng nhập".tr(),
                       color: Colors.black,
                       colorText: Colors.white,
                     ),
@@ -140,8 +141,8 @@ class _LoginPageState extends State<LoginPage> {
               return const ForgetPassword();
             }));
           },
-          child: const Text(
-            "Quên mật khẩu?",
+          child: Text(
+            "Quên mật khẩu?".tr(),
             style: TextStyle(
                 fontFamily: 'Urbanist',
                 fontWeight: FontWeight.bold,
@@ -166,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                "Hoặc đăng nhập với",
+                "Hoặc đăng nhập với".tr(),
                 style: TextStyle(
                   fontFamily: 'Urbanist',
                   fontSize: 14,
@@ -202,15 +203,16 @@ class _LoginPageState extends State<LoginPage> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Chức Năng Chưa Hoàn Thiện'),
+                        title: Text("Chức Năng Chưa Hoàn Thiện").tr(),
                         content: Text(
-                            'Bạn vui lòng thử lại sau, chức năng hiện tại chưa hoàn thiện'),
+                                "Bạn vui lòng thử lại sau, chức năng hiện tại chưa hoàn thiện")
+                            .tr(),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text('Đóng'),
+                            child: Text("Đóng").tr(),
                           ),
                         ],
                       );
@@ -227,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Bạn không có tài khoản? ",
+        Text("Bạn không có tài khoản? ".tr(),
             style: TextStyle(
               fontFamily: 'Urbanist',
               fontSize: 15,
@@ -235,8 +237,8 @@ class _LoginPageState extends State<LoginPage> {
             )),
         GestureDetector(
           onTap: widget.onTap,
-          child: const Text(
-            " Đăng ký ngay",
+          child: Text(
+            " Đăng ký ngay".tr(),
             style: TextStyle(
                 fontFamily: 'Urbanist',
                 fontSize: 15,

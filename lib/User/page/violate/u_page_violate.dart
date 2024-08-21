@@ -1,6 +1,7 @@
 import 'package:apartment_management/Admin/adminPage/violate/item_violate.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _User_ViolatePageState extends State<User_ViolatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Danh sách vi phạm nội quy',
+        title: Text("Danh sách vi phạm nội quy".tr(),
             style: TextStyle(
                 fontSize: 20, fontFamily: "Urbanist", color: Colors.black)),
       ),

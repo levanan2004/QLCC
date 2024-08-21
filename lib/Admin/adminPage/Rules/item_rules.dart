@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ItemPageRules extends StatefulWidget {
@@ -65,7 +66,7 @@ class _ItemPageRulesState extends State<ItemPageRules> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Hình phạt: ' + widget.fined,
+                    "Hình phạt: ".tr() + widget.fined,
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.red,

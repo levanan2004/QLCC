@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class User_MyContainerApartmentDetails extends StatelessWidget {
@@ -59,13 +60,13 @@ class User_MyContainerApartmentDetails extends StatelessWidget {
                       TextStyle(color: Colors.white, fontFamily: "Urbanist")),
               Row(
                 children: [
-                  Text("Tên: " + Name,
+                  Text("Tên: ".tr() + Name,
                       style: TextStyle(
                           color: Colors.white, fontFamily: "Urbanist")),
                   SizedBox(
                     width: 10,
                   ),
-                  Text(Sex.toString() == "1" ? "Nam" : "Nữ",
+                  Text(Sex.toString() == "1" ? "Nam".tr() : "Nữ".tr(),
                       style: TextStyle(
                           color: Colors.black54, fontFamily: "Urbanist")),
                 ],

@@ -1,4 +1,5 @@
 import 'package:apartment_management/User/page_component/u_pc_apartment_details.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class User_MyApartmentDetails extends StatefulWidget {
@@ -69,7 +70,7 @@ class _User_MyApartmentDetailsState extends State<User_MyApartmentDetails> {
                           width: 80,
                         ),
                         Text(
-                          "Phòng " + widget.apartmentName.toString(),
+                          "Phòng ".tr() + widget.apartmentName.toString(),
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -99,7 +100,7 @@ class _User_MyApartmentDetailsState extends State<User_MyApartmentDetails> {
                     SizedBox(
                       width: 20,
                     ),
-                    Text("Thành Viên: ",
+                    Text("Thành Viên: ".tr(),
                         style: TextStyle(
                             color: Colors.black87,
                             fontSize: 25,

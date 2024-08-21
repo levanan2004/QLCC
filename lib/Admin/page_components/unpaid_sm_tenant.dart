@@ -1,6 +1,7 @@
 import 'package:apartment_management/Admin/components/con_service_tenant.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SBServiceTenantUnPaid extends StatefulWidget {
@@ -28,13 +29,14 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: const Text("Xóa Căn Hộ"),
-                content: const Text("Bạn có chắc chắn xóa căn hộ này"),
+                title: const Text("Xóa Phòng").tr(),
+                content:
+                    const Text("Bạn có chắc chắn muốn xóa phòng này?").tr(),
                 actions: [
                   // CANCEL BUTTON
                   TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text("Hủy")),
+                      child: const Text("Hủy").tr()),
 
                   // DELETE BUTTON
                   TextButton(
@@ -57,7 +59,7 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
                         }
                         Navigator.pop(context);
                       },
-                      child: const Text("Vâng")),
+                      child: const Text("Chắc chắn").tr()),
                 ],
               ));
     }
@@ -68,14 +70,14 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: const Text("Cập nhật trạng thái"),
-                content:
-                    const Text("Bạn có chắc chắn căn hộ này đã dóng tiền?"),
+                title: const Text("Cập nhật trạng thái").tr(),
+                content: const Text("Bạn có chắc chắn căn hộ này đã dóng tiền?")
+                    .tr(),
                 actions: [
                   // CANCEL BUTTON
                   TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text("Hủy")),
+                      child: const Text("Hủy").tr()),
 
                   // DELETE BUTTON
                   TextButton(
@@ -119,7 +121,7 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
                         }
                         Navigator.pop(context);
                       },
-                      child: const Text("Vâng")),
+                      child: const Text("Chắc chắn").tr()),
                 ],
               ));
     }
@@ -165,7 +167,7 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
               return Circular();
             }
             return Center(
-              child: Text('Hãy thêm dữ liệu'),
+              child: Text("Hãy thêm dữ liệu"),
             );
           }),
     );

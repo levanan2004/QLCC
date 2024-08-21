@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/dialog_success.dart';
 import 'package:apartment_management/User/components/text_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
               //welcome back message
               Text(
-                "Quên mật khẩu!",
+                "Quên mật khẩu!".tr(),
                 style: TextStyle(
                   fontFamily: 'Urbanist',
                   color: Color(0xFF1E232C),
@@ -85,7 +86,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 height: 25,
               ),
               Text(
-                  "Đừng lo lắng! Nó xảy ra. Vui lòng nhập địa chỉ email được liên kết với tài khoản của bạn.",
+                  "Đừng lo lắng! Nó xảy ra. Vui lòng nhập địa chỉ email được liên kết với tài khoản của bạn."
+                      .tr(),
                   style: TextStyle(
                     fontFamily: 'Urbanist',
                     color: Color(0xFF8391A1),
@@ -96,7 +98,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
               MyTextFormField(
                   controller: emailTextController,
-                  hintText: "Nhập Email",
+                  hintText: "Nhập email".tr(),
                   icon: Icon(Icons.email),
                   obscureText: false),
               const SizedBox(
@@ -105,7 +107,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               GestureDetector(
                 onTap: passwordReset,
                 child: MyButton(
-                  text: "Nộp",
+                  text: "Xác Nhận".tr(),
                   color: Colors.black,
                   colorText: Colors.white,
                 ),

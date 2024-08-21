@@ -1,5 +1,6 @@
 import 'package:apartment_management/User/components/u_con_apartment_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class User_SBApartmentDetails extends StatefulWidget {
@@ -57,7 +58,7 @@ class _User_SBApartmentDetailsState extends State<User_SBApartmentDetails> {
               );
             }
             return Center(
-              child: Text("Không Có Dữ Liệu"),
+              child: Text("Không Có Dữ Liệu".tr()),
             );
           }),
     );

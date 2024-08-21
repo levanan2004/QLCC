@@ -1,6 +1,7 @@
 import 'package:apartment_management/Admin/feature_page/add_apartment_building.dart';
 import 'package:apartment_management/Admin/page_components/pc_apartment_building.dart';
-import 'package:apartment_management/User/page/my_drawer.dart';
+import 'package:apartment_management/User/page/drawer/my_drawer.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class _MyAdminHomeState extends State<MyAdminHome> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Xin Chào, " + email.toString(),
+        title: Text("Xin Chào, ".tr() + email.toString(),
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -62,14 +63,14 @@ class _MyAdminHomeState extends State<MyAdminHome> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Hãy Chọn",
+                      "Hãy Chọn".tr(),
                       style: TextStyle(
                           color: Colors.white60,
                           fontSize: 25,
                           fontFamily: "Urbanist"),
                     ),
                     Text(
-                      "Tòa Nhà Chung Cư / Nhà Trọ",
+                      "Tòa Nhà Chung Cư / Nhà Trọ".tr(),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,

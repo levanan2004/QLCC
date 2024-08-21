@@ -1,7 +1,8 @@
-import 'package:apartment_management/User/page/my_drawer.dart';
+import 'package:apartment_management/User/page/drawer/my_drawer.dart';
 import 'package:apartment_management/User/page/notification/user_page_notification.dart';
 import 'package:apartment_management/User/page/room_service/u_room_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -80,11 +81,11 @@ class _User_HomePageState extends State<User_HomePage> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Cách sử dụng app'),
+                title: Text("Cách sử dụng ứng dụng").tr(),
                 content: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                    text: 'Nếu bạn chưa thấy Căn hộ ',
+                    text: "Nếu bạn chưa thấy Phòng ".tr(),
                     style: TextStyle(color: Colors.black),
                   ),
                   WidgetSpan(
@@ -95,11 +96,11 @@ class _User_HomePageState extends State<User_HomePage> {
                     ),
                   ),
                   TextSpan(
-                    text: ' của mình hãy báo chủ căn hộ\n',
+                    text: " của mình hãy báo chủ căn hộ\n".tr(),
                     style: TextStyle(color: Colors.black),
                   ),
                   TextSpan(
-                    text: '\nNếu bạn chưa thấy các ',
+                    text: "\nNếu bạn chưa thấy các Dịch vụ".tr(),
                     style: TextStyle(color: Colors.black),
                   ),
                   WidgetSpan(
@@ -110,7 +111,7 @@ class _User_HomePageState extends State<User_HomePage> {
                     ),
                   ),
                   TextSpan(
-                    text: ' của mình hãy báo chủ căn hộ',
+                    text: " của mình hãy báo chủ căn hộ".tr(),
                     style: TextStyle(color: Colors.black),
                   ),
                 ])),
@@ -119,7 +120,7 @@ class _User_HomePageState extends State<User_HomePage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Đóng'),
+                    child: Text("Đóng").tr(),
                   ),
                 ],
               );

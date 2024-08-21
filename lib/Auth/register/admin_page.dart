@@ -4,6 +4,7 @@ import 'package:apartment_management/User/components/password_textformfield.dart
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:apartment_management/Auth/forget_password_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
       widget.onTap;
 
       // show error to user
-      displayMessage("Mật khẩu không trùng khớp!");
+      displayMessage("Mật khẩu không trùng nhau".tr());
       return;
     }
 
@@ -54,6 +55,7 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
         'idApartment': "a",
         'idApartmentName': 999,
         'role': "1",
+        'Sex': "1",
         'CODE': '1321dqw'
       });
       await userDocRef.collection('CODE').add({'ApartmentBuildingCode': '1'});
@@ -98,12 +100,12 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
                     RequiredTextForm(
                         maxLine: 20,
                         controller: userNameTextController,
-                        hintText: "Tên Người dùng",
+                        hintText: "Tên Người dùng".tr(),
                         icon: Icon(Icons.person),
                         obscureText: false),
                     EmailTextForm(
                         controller: emailTextController,
-                        hintText: "Email",
+                        hintText: "Email".tr(),
                         icon: Icon(Icons.email),
                         obscureText: false),
                     const SizedBox(
@@ -111,12 +113,12 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
                     ),
                     PasswordTextForm(
                         controller: passwordTextController,
-                        hintText: "Mật khẩu",
+                        hintText: "Mật khẩu".tr(),
                         icon: Icon(Icons.lock),
                         obscureText: true),
                     PasswordTextForm(
                         controller: confirmPasswordTextController,
-                        hintText: "Nhập lại mật khẩu",
+                        hintText: "Nhập lại mật khẩu".tr(),
                         icon: Icon(Icons.lock_reset_sharp),
                         obscureText: true),
                     const SizedBox(
@@ -131,7 +133,7 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
                     GestureDetector(
                       onTap: signUp,
                       child: MyButton(
-                        text: "Đăng ký",
+                        text: "Đăng ký".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),
@@ -162,8 +164,8 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
               return const ForgetPassword();
             }));
           },
-          child: const Text(
-            "Quên mật khẩu?",
+          child: Text(
+            "Quên mật khẩu?".tr(),
             style: TextStyle(
                 fontFamily: 'Urbanist',
                 fontWeight: FontWeight.bold,
@@ -178,7 +180,7 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Bạn đã có tài khoản? ",
+        Text("Bạn đã có tài khoản? ".tr(),
             style: TextStyle(
               fontFamily: 'Urbanist',
               fontSize: 15,
@@ -186,8 +188,8 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
             )),
         GestureDetector(
           onTap: widget.onTap,
-          child: const Text(
-            " Đăng nhập, ngay!",
+          child: Text(
+            " Đăng nhập, ngay!".tr(),
             style: TextStyle(
                 fontFamily: 'Urbanist',
                 fontSize: 15,

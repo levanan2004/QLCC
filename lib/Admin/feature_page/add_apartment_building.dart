@@ -3,6 +3,7 @@ import 'package:apartment_management/Admin/adminPage/apartment_building.dart';
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -79,12 +80,13 @@ class _MyAddABState extends State<MyAddAB> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Thông báo'),
+                title: Text("Thông báo").tr(),
                 content: Text(
-                    'Số lượng tòa nhà chung cư bạn tạo đã đạt mức giới hạn.'),
+                        "Số lượng tòa nhà chung cư bạn tạo đã đạt mức giới hạn.")
+                    .tr(),
                 actions: [
                   TextButton(
-                    child: Text('OK'),
+                    child: Text("Đóng".tr()),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -109,11 +111,11 @@ class _MyAddABState extends State<MyAddAB> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text('Có lỗi đã tồn tại'),
-                  content: Text('Xin vui lòng hãy thoát ra và tạo lại'),
+                  title: Text("Có lỗi đã tồn tại").tr(),
+                  content: Text("Xin vui lòng hãy thoát ra và tạo lại").tr(),
                   actions: [
                     TextButton(
-                      child: Text('Đóng'),
+                      child: Text("Đóng").tr(),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -150,47 +152,6 @@ class _MyAddABState extends State<MyAddAB> {
                   });
                 }
                 ;
-                // Thêm dịch vụ Tiền Rác
-                // FirebaseFirestore.instance
-                //     .collection('ApartmentBuilding')
-                //     .doc(newDocumentId)
-                //     .collection('ServiceAll')
-                //     .add({
-                //   'IdService': 'trash',
-                //   'ServiceName': 'Tiền Rác',
-                //   'Month': Timestamp.now().toDate().month,
-                // }).then((documentReferenceServiceAll) {
-                //   String newDocumentIdServiceAll =
-                //       documentReferenceServiceAll.id;
-                //   FirebaseFirestore.instance
-                //       .collection('ApartmentBuilding')
-                //       .doc(newDocumentId)
-                //       .collection('ServiceAll')
-                //       .doc(newDocumentIdServiceAll)
-                //       .collection('Month')
-                //       .add({
-                //     'Month': 13,
-                //   }).then((documentReferenceMonth) {
-                //     String newDocumentIdMonth = documentReferenceMonth.id;
-                //     FirebaseFirestore.instance
-                //         .collection('ApartmentBuilding')
-                //         .doc(newDocumentId)
-                //         .collection('ServiceAll')
-                //         .doc(newDocumentIdServiceAll)
-                //         .collection('Month')
-                //         .doc(newDocumentIdMonth)
-                //         .collection('Room')
-                //         .add({
-                //       'ApartmentName': 999,
-                //       'Floor': 999,
-                //       'TenantEmail': 'taikhoan999@gmail.com',
-                //       'Money': 999999,
-                //       'Unit': 9999999,
-                //       'Status': false,
-                //       'TimeStamp': Timestamp.now(),
-                //     });
-                //   });
-                // });
               }
 
               _addApartmentBuildingCode(code);
@@ -245,7 +206,7 @@ class _MyAddABState extends State<MyAddAB> {
                     ),
                     //welcome back message
                     Text(
-                      "Tòa Nhà chung Cư / Trọ",
+                      "Tòa Nhà Chung Cư / Nhà Trọ".tr(),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Color(0xFF1E232C),
@@ -260,7 +221,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 20,
                         controller: ApartmentBuildingNameController,
-                        hintText: "Tên Tòa Chung Cư",
+                        hintText: "Tên Tòa Chung Cư".tr(),
                         icon: Icon(Icons.house),
                         obscureText: false),
                     const SizedBox(
@@ -270,7 +231,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 20,
                         controller: OwnController,
-                        hintText: "Người Sở Hữu",
+                        hintText: "Người Sở Hữu".tr(),
                         icon: Icon(Icons.person),
                         obscureText: false),
                     const SizedBox(
@@ -280,7 +241,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 30,
                         controller: PhoneController,
-                        hintText: "Số Điện Thoại",
+                        hintText: "Số điện thoại".tr(),
                         icon: Icon(Icons.phone),
                         obscureText: false),
                     const SizedBox(
@@ -290,7 +251,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 30,
                         controller: AddressController1,
-                        hintText: "Ấp, Xã",
+                        hintText: "Ấp, Xã".tr(),
                         icon: Icon(Icons.pin_drop),
                         obscureText: false),
                     const SizedBox(
@@ -300,7 +261,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 30,
                         controller: AddressController2,
-                        hintText: "Huyện/Quận, Thành Phố",
+                        hintText: "Huyện/Quận, Thành Phố".tr(),
                         icon: Icon(Icons.place),
                         obscureText: false),
                     const SizedBox(
@@ -310,7 +271,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 2,
                         controller: AmountFloorController,
-                        hintText: "Số Lương Tầng",
+                        hintText: "Số Lương Tầng".tr(),
                         requireLeadingZero: false,
                         icon: Icon(Icons.elevator),
                         obscureText: false),
@@ -321,7 +282,7 @@ class _MyAddABState extends State<MyAddAB> {
                     RequiredTextForm(
                         maxLine: 2,
                         controller: AmountController,
-                        hintText: "Số lượng Căn Hộ Mỗi Tầng",
+                        hintText: "Số lượng Căn Hộ Mỗi Tầng".tr(),
                         icon: Icon(Icons.home),
                         obscureText: false),
                     const SizedBox(
@@ -334,7 +295,7 @@ class _MyAddABState extends State<MyAddAB> {
                     GestureDetector(
                       onTap: addDataAB,
                       child: MyButton(
-                        text: "Nộp",
+                        text: "Thêm".tr(),
                         color: Colors.black,
                         colorText: Colors.white,
                       ),
