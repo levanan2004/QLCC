@@ -5,6 +5,7 @@ import 'package:apartment_management/Admin/page_components/pc_floor.dart';
 import 'package:apartment_management/Admin/page_components/pc_service.dart';
 import 'package:apartment_management/User/page/drawer/account_page.dart';
 import 'package:apartment_management/User/page/drawer/message/page_message.dart';
+import 'package:apartment_management/admob/banner.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,17 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 50,
+          height: 30,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // quảng cáo banner
+            BannerAdWidget()
+          ],
+        ),
+        SizedBox(
+          height: 30,
         ),
         Row(
           children: [
@@ -148,10 +159,8 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             color: Colors.white,
                           )),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 20,
-                          ),
                           Text(
                             "Quản lý".tr(),
                             style: TextStyle(
@@ -190,10 +199,8 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             color: Colors.white,
                           )),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 20,
-                          ),
                           Text(
                             "Tin Nhắn".tr(),
                             style: TextStyle(
@@ -235,10 +242,8 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             color: Colors.white,
                           )),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 20,
-                          ),
                           Text(
                             "Vi Phạm".tr(),
                             style: TextStyle(
@@ -277,10 +282,8 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
                             size: 30,
                           )),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 20,
-                          ),
                           Text(
                             "Nội Quy".tr(),
                             style: TextStyle(

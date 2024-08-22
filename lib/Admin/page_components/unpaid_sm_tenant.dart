@@ -71,8 +71,8 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
           context: context,
           builder: (context) => AlertDialog(
                 title: const Text("Cập nhật trạng thái").tr(),
-                content: const Text("Bạn có chắc chắn căn hộ này đã dóng tiền?")
-                    .tr(),
+                content:
+                    const Text("Bạn có chắc chắn phòng này đã dóng tiền?").tr(),
                 actions: [
                   // CANCEL BUTTON
                   TextButton(
@@ -108,9 +108,9 @@ class _SBServiceTenantUnPaidState extends State<SBServiceTenantUnPaid> {
                           FirebaseFirestore.instance
                               .collection('Notifications')
                               .add({
-                            'Title': 'Bạn đã đóng tiền 1 dịch vụ',
-                            'Content':
-                                'Hãy vào xem chi tiết dịch vụ. Quản lý đã xác thực rằng bạn đã đóng tiền 1 dịch vụ tháng',
+                            'Title': tr('Bạn đã đóng tiền 1 dịch vụ'),
+                            'Content': tr(
+                                'Hãy vào xem chi tiết dịch vụ. Quản lý đã xác thực rằng bạn đã đóng tiền 1 dịch vụ tháng'),
                             'UserEmail': currentEmail,
                             'Status': false,
                             'Timestamp': Timestamp.now(),

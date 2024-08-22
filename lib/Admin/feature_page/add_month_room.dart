@@ -151,9 +151,14 @@ class _MyAddMonthRoomState extends State<MyAddMonthRoom> {
               });
               // Thêm tin nhắn của user khi Admin thêm ServiceAll(nó sẽ tự thêm Service và Month) cho các Menmber trong Apartment nào đó được chỉ định
               FirebaseFirestore.instance.collection('Notifications').add({
-                'Title': 'Bạn có 1 dịch vụ mới',
-                'Content':
-                    'Hãy vào xem chi tiết dịch vụ mới, bạn đã được Quản lý thêm dịch vụ ${widget.idServiceName} trong tháng: ${widget.Month}',
+                'Title': tr('Bạn có 1 dịch vụ mới'),
+                'Content': tr(
+                  'Hãy vào xem chi tiết dịch vụ mới, bạn đã được Quản lý thêm dịch vụ {idServiceName} trong tháng: {Month}',
+                  namedArgs: {
+                    'idServiceName': widget.idServiceName,
+                    'Month': widget.Month.toString()
+                  },
+                ),
                 'UserEmail': tenantEmail,
                 'Status': false,
                 'Timestamp': Timestamp.now(),

@@ -67,7 +67,7 @@ class _ItemPageViolateState extends State<ItemPageViolate> {
               GestureDetector(
                 onTap: widget.onTap,
                 child: Container(
-                  width: 100,
+                  width: 120,
                   height: 30,
                   decoration: BoxDecoration(
                       color: widget.status == true ? Colors.green : Colors.red,

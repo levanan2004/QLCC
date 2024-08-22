@@ -75,9 +75,9 @@ class _MyAddTenantApartmentState extends State<MyAddTenantApartment> {
           });
           // Thêm tin nhắn của user khi Admin thêm Tenant vào Apartment
           FirebaseFirestore.instance.collection('Notifications').add({
-            'Title': 'Bạn đã được thêm vào phòng!',
-            'Content':
-                'Hãy vào xem phòng của mình, bạn đã được Quản lý thêm vào 1 phòng nào đó!',
+            'Title': tr('Bạn đã được thêm vào phòng!'),
+            'Content': tr(
+                'Hãy vào xem phòng của mình, bạn đã được Quản lý thêm vào 1 phòng nào đó!'),
             'UserEmail': email,
             'Status': false,
             'Timestamp': Timestamp.now(),

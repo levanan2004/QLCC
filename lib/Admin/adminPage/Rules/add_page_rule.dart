@@ -48,10 +48,11 @@ class _AddRulesPageState extends State<AddRulesPage> {
             .then((querySnapshot) {
           for (var doc in querySnapshot.docs) {
             FirebaseFirestore.instance.collection('Notifications').add({
-              'Title': 'Nội quy đã có thay đổi',
-              'Content':
-                  'Hãy vào xem chi tiết ${contentController.text.trim()}, quản lý đã thay đổi nội quy',
-              // Sử dụng email từ tài liệu người dùng
+              'Title': tr('Nội quy đã có thay đổi'),
+              'Content': tr(
+                'Hãy vào xem chi tiết {content}, quản lý đã thay đổi nội quy',
+                namedArgs: {'content': contentController.text.trim()},
+              ),
               'UserEmail': doc['email'],
               'Status': false,
               'Timestamp': Timestamp.now(),

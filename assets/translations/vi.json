@@ -64,6 +64,7 @@
     "Nhập tin nhắn": "Nhập tin nhắn",
     "Đã gửi đường liên kết sửa mật khẩu, hãy xem gmail của bạn": "Đã gửi đường liên kết sửa mật khẩu, hãy xem gmail của bạn",
     "Thông báo": "Thông báo",
+    "Mới": "Mới",
     "Tầng: ": "Tầng: ",
     "Dịch vụ: ": "Dịch vụ: ",
     "Người dùng chưa nhập CODE của quản lý đưa, hãy nhấn vào Thêm CODE": "Người dùng chưa nhập CODE của quản lý đưa, hãy nhấn vào Thêm CODE",
@@ -184,5 +185,19 @@
     "Nhập thông tin dịch vụ của bạn": "Nhập thông tin dịch vụ của bạn",
     "Tháng (vd: 1, 2,...)": "Tháng (vd: 1, 2,...)",
     "Tên Dịch Vụ (vd: Tiền Rác,..)": "Tên Dịch Vụ (vd: Tiền Rác,..)",
-    "Hãy nhập đủ khung": "Hãy nhập đủ khung"
+    "Hãy nhập đủ khung": "Hãy nhập đủ khung",
+    "Người dùng {email} vừa đăng ký tài khoản!": "Người dùng {email} vừa đăng ký tài khoản!",
+    "Hãy mau sắp xếp chỗ ở cho người dùng {email}": "Hãy mau sắp xếp chỗ ở cho người dùng {email}",
+    "Bạn đã được thêm vào phòng!": "Bạn đã được thêm vào phòng!",
+    "Hãy vào xem phòng của mình, bạn đã được Quản lý thêm vào 1 phòng nào đó!": "Hãy vào xem phòng của mình, bạn đã được Quản lý thêm vào 1 phòng nào đó!",
+    "Bạn có 1 dịch vụ mới": "Bạn có 1 dịch vụ mới",
+    "Hãy vào xem chi tiết dịch vụ mới, bạn đã được Quản lý thêm dịch vụ {idServiceName} trong tháng: {Month}": "Hãy vào xem chi tiết dịch vụ mới, bạn đã được Quản lý thêm dịch vụ {idServiceName} trong tháng: {Month}",
+    "Nội quy đã có thay đổi": "Nội quy đã có thay đổi",
+    "Hãy vào xem chi tiết {content}, quản lý đã thay đổi nội quy": "Hãy vào xem chi tiết {content}, quản lý đã thay đổi nội quy",
+    "Bạn đã vi phạm 1 lỗi": "Bạn đã vi phạm 1 lỗi",
+    "Hãy vào xem chi tiết {title}, bạn đã bị Quản lý thêm 1 lỗi": "Hãy vào xem chi tiết {title}, bạn đã bị Quản lý thêm 1 lỗi",
+    "Bạn vừa gỡ được 1 lỗi vi phạm": "Bạn vừa gỡ được 1 lỗi vi phạm",
+    "bạn đã hết vi phạm 1 lỗi nào đó": "Bạn đã hết vi phạm 1 lỗi nào đó",
+    "Bạn đã đóng tiền 1 dịch vụ": "Bạn đã đóng tiền 1 dịch vụ",
+    "Hãy vào xem chi tiết dịch vụ. Quản lý đã xác thực rằng bạn đã đóng tiền 1 dịch vụ tháng": "Hãy vào xem chi tiết dịch vụ. Quản lý đã xác thực rằng bạn đã đóng tiền 1 dịch vụ tháng"
 }

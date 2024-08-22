@@ -55,8 +55,10 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
               .doc(userDoc.id)
               .collection('Notifications')
               .add({
-            'Title': "Người dùng ${email} vừa đăng ký tài khoản!",
-            'Content': 'Hãy mau sắp xếp chỗ ở cho người dùng ${email}',
+            'Title': tr('Người dùng {email} vừa đăng ký tài khoản!',
+                namedArgs: {'email': email}),
+            'Content': tr('Hãy mau sắp xếp chỗ ở cho người dùng {email}',
+                namedArgs: {'email': email}),
             'UserEmail': email,
             'Status': false,
             'Timestamp': Timestamp.now(),

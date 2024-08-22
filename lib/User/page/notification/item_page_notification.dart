@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -55,7 +56,7 @@ class itemPageNotification extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                         child: Text(
-                      'Mới',
+                      "Mới".tr(),
                       style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Urbanist",
@@ -101,7 +102,8 @@ class itemPageNotification extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Thời gian: ${DateFormat.yMMMd().format(timeStamp.toDate())}',
+                  "Thời gian: ".tr() +
+                      DateFormat.yMMMd().format(timeStamp.toDate()),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 14,

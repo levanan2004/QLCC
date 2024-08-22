@@ -1,6 +1,7 @@
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/page/notification/item_page_notification.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class _NotificationsAdminPageState extends State<NotificationsAdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Thông báo'),
+          title: Text("Thông báo").tr(),
         ),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance

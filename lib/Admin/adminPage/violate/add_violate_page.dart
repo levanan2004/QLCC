@@ -42,9 +42,11 @@ class _AddViolatePageState extends State<AddViolatePage> {
           'TimeStamp': Timestamp.now()
         });
         FirebaseFirestore.instance.collection('Notifications').add({
-          'Title': 'Bạn đã vi phạm 1 lỗi',
-          'Content':
-              'Hãy vào xem chi tiết ${titleController.text.trim()}, bạn đã bị Quản lý thêm 1 lỗi',
+          'Title': tr('Bạn đã vi phạm 1 lỗi'),
+          'Content': tr(
+            'Hãy vào xem chi tiết {title}, bạn đã bị Quản lý thêm 1 lỗi',
+            namedArgs: {'title': titleController.text.trim()},
+          ),
           'UserEmail': widget.violateEmail,
           'Status': false,
           'Timestamp': Timestamp.now(),
