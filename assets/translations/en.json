@@ -198,5 +198,7 @@
     "Bạn vừa gỡ được 1 lỗi vi phạm": "You have removed a violation",
     "bạn đã hết vi phạm 1 lỗi nào đó": "You no longer have that particular violation",
     "Bạn đã đóng tiền 1 dịch vụ": "You have paid for 1 service",
-    "Hãy vào xem chi tiết dịch vụ. Quản lý đã xác thực rằng bạn đã đóng tiền 1 dịch vụ tháng": "Check the service details. The manager has confirmed that you have paid for 1 service this month"
+    "Hãy vào xem chi tiết dịch vụ. Quản lý đã xác thực rằng bạn đã đóng tiền 1 dịch vụ tháng": "Check the service details. The manager has confirmed that you have paid for 1 service this month",
+    "Xóa Tài Khoản Này?": "Delete This Account?",
+    "Bạn có chắc chắn muốn xóa tài khoản này?": "Are you sure you want to delete this account?"
 }
