@@ -1,6 +1,6 @@
 import 'package:apartment_management/Auth/google_login.dart';
+import 'package:apartment_management/Privacy_Policy/privacy_policy_page.dart';
 import 'package:apartment_management/User/components/button.dart';
-import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/components/email_textformf.dart';
 import 'package:apartment_management/User/components/password_textformfield.dart';
 import 'package:apartment_management/User/components/required_textformf.dart';
@@ -33,6 +33,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
   final AddressController = TextEditingController();
   final passwordTextController = TextEditingController();
   final confirmPasswordTextController = TextEditingController();
+  bool _isAgreed = false; // Checkbox state
   // Thêm Thông báo
   void AddNotificationToAdmin(String code, String email) async {
     // <KTVT. Kiểm tra và thêm vào Users(Admin) 1 notification là: "người dùng xyz tham gia vào Tòa Nhà Chung Cư / Nhà Trọ của bạn">
@@ -71,26 +72,17 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
 
   // Đăng ký tài khoản người dùng
   void signUp() async {
-    // show loading circle
-    showDialog(
-        context: context,
-        builder: (context) => const Center(
-              child: Circular(),
-            ));
+    if (!_isAgreed) {
+      displayMessage("Bạn cần đồng ý với chính sách bảo mật.".tr());
+      return;
+    }
 
-    // make sure passwords match
     if (passwordTextController.text != confirmPasswordTextController.text) {
-      // pop loading circle
-      Navigator.pop(context);
-
-      // show error to user
       displayMessage("Mật khẩu không trùng nhau".tr());
       return;
     }
 
-    // try creating the user
-    try {
-      //<code. Kiểm tra xem người dùng nhập CODE có tồn tại không>
+    if (_formKey.currentState!.validate()) {
       final code = CodeController.text.trim();
       final codeQuery = FirebaseFirestore.instance
           .collection('ApartmentBuilding')
@@ -98,66 +90,47 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
           .limit(1)
           .get();
 
-      // Chờ kiểm tra CODE đến khi hoàn thành
       final querySnapshot = await codeQuery;
 
       if (querySnapshot.docs.isEmpty) {
-        // Vòng tròn tải Pop
-        Navigator.pop(context);
-
-        // Hiển thị thông báo lỗi nếu mã không tồn tại
         displayMessage("CODE bạn nhập sai!".tr());
         return;
       }
-      // </code - kết thúc>
-      if (_formKey.currentState!.validate()) {
-        if (userNameTextController.text.isNotEmpty ||
-            emailTextController.text.isNotEmpty ||
-            CodeController.text.isNotEmpty ||
-            PhoneController.text.isNotEmpty ||
-            SexController.text.isNotEmpty ||
-            CCCDController1.text.isNotEmpty ||
-            AddressController.text.isNotEmpty ||
-            passwordTextController.text.isNotEmpty ||
-            confirmPasswordTextController.text.isNotEmpty) {
-          UserCredential userCredential = await FirebaseAuth.instance
-              .createUserWithEmailAndPassword(
-                  email: emailTextController.text.trim(),
-                  password: passwordTextController.text.trim());
-          // sau khi tạo người dùng, hãy tạo một tài liệu mới trong cloud firestore có tên là Users
-          FirebaseFirestore.instance
-              .collection("Users")
-              .doc(userCredential.user!.email)
-              .set({
-            'email': emailTextController.text.trim(),
-            'username': userNameTextController.text.trim(),
-            'idApartmentBuilding': "a",
-            'idApartmentFloor': "a",
-            'idApartment': "a",
-            'idApartmentName': 999,
-            'role': "2",
-            'CODE': code,
-            'Phone': PhoneController.text.trim(),
-            'CCCD': CCCDController1.text.trim(),
-            'Address': AddressController.text.trim(),
-            'Sex': SexController.text.trim(),
-          });
-          AddNotificationToAdmin(code, emailTextController.text.trim());
-        }
+
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailTextController.text.trim(),
+                password: passwordTextController.text.trim());
+
+        await FirebaseFirestore.instance
+            .collection("Users")
+            .doc(userCredential.user!.email)
+            .set({
+          'email': emailTextController.text.trim(),
+          'username': userNameTextController.text.trim(),
+          'idApartmentBuilding': "a",
+          'idApartmentFloor': "a",
+          'idApartment': "a",
+          'idApartmentName': 999,
+          'role': "2",
+          'CODE': code,
+          'Phone': PhoneController.text.trim(),
+          'CCCD': CCCDController1.text.trim(),
+          'Address': AddressController.text.trim(),
+          'Sex': SexController.text.trim(),
+        });
+
+        AddNotificationToAdmin(code, emailTextController.text.trim());
+
+        if (context.mounted) Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        displayMessage(e.code);
       }
-
-      // Vòng tròn tải Pop
-      if (context.mounted) Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // Vòng tròn tải Pop
-      Navigator.pop(context);
-
-      //hiển thị thông báo lỗi
-      displayMessage(e.code);
     }
   }
 
-  // Display a dialog message
   void displayMessage(String message) {
     showDialog(
         context: context,
@@ -172,6 +145,21 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                 ),
               ),
             ));
+  }
+
+  Future<void> _openPrivacyPolicy() async {
+    final bool? agreed = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PrivacyPolicyPage(),
+      ),
+    );
+
+    if (agreed == true) {
+      setState(() {
+        _isAgreed = true;
+      });
+    }
   }
 
   @override
@@ -267,6 +255,33 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     _buildForgetPassword(),
                     const SizedBox(
                       height: 25,
+                    ), // Checkbox and policy text
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: _isAgreed,
+                          onChanged: (value) {
+                            setState(() {
+                              _isAgreed = value!;
+                            });
+                          },
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => _openPrivacyPolicy(),
+                            child: Text(
+                              "Tôi đồng ý với chính sách bảo mật".tr(),
+                              style: TextStyle(
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     // Button Login
                     GestureDetector(

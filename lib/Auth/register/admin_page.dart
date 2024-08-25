@@ -1,3 +1,4 @@
+import 'package:apartment_management/Privacy_Policy/privacy_policy_page.dart';
 import 'package:apartment_management/User/components/button.dart';
 import 'package:apartment_management/User/components/email_textformf.dart';
 import 'package:apartment_management/User/components/password_textformfield.dart';
@@ -24,9 +25,13 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
 
   final passwordTextController = TextEditingController();
   final confirmPasswordTextController = TextEditingController();
+  bool _isAgreed = false; // Checkbox state
   // Đăng ký tài khoản người dùng
-  Future<void> signUp() async {
-    // make sure passwords match
+  void signUp() async {
+    if (!_isAgreed) {
+      displayMessage("Bạn cần đồng ý với chính sách bảo mật.".tr());
+      return;
+    }
     if (passwordTextController.text != confirmPasswordTextController.text) {
       // pop loading circle
       widget.onTap;
@@ -75,6 +80,21 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
         builder: (context) => AlertDialog(
               title: Text(message),
             ));
+  }
+
+  Future<void> _openPrivacyPolicy() async {
+    final bool? agreed = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PrivacyPolicyPage(),
+      ),
+    );
+
+    if (agreed == true) {
+      setState(() {
+        _isAgreed = true;
+      });
+    }
   }
 
   @override
@@ -126,6 +146,31 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
                     ),
                     // GestureDetector ForgetPassword
                     _buildForgetPassword(),
+                    // Checkbox and policy text
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: _isAgreed,
+                          onChanged: (value) {
+                            setState(() {
+                              _isAgreed = value!;
+                            });
+                          },
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => _openPrivacyPolicy(),
+                            child: Text(
+                              "Tôi đồng ý với chính sách bảo mật".tr(),
+                              style: TextStyle(
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(
                       height: 25,
                     ),
