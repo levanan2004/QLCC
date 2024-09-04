@@ -21,7 +21,7 @@ class _SBApartmentDetailsState extends State<SBApartmentDetails> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.7,
+      height: MediaQuery.of(context).size.height * 0.5,
       child: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection("ApartmentBuilding")

@@ -6,6 +6,7 @@ import 'package:apartment_management/Admin/page_components/pc_service.dart';
 import 'package:apartment_management/User/page/drawer/account_page.dart';
 import 'package:apartment_management/User/page/drawer/message/page_message.dart';
 import 'package:apartment_management/admob/banner.dart';
+import 'package:apartment_management/admob/interstitial.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,20 @@ class ChildFloorService extends StatefulWidget {
 }
 
 class _ChildFloorServiceState extends State<ChildFloorService> {
+  // <quảng cáo Trung gian(Interstitial)>
+  final InterstitialAdService _interstitialAdService = InterstitialAdService();
+  void _showInterstitialAd() {
+    _interstitialAdService.showInterstitialAd();
+  }
+
+  // </quảng cáo Trung gian(Interstitial)>
+  @override
+  void initState() {
+    super.initState();
+    // Khởi tạo Trung gian(Interstitial) khi vừa sang trang này
+    _interstitialAdService.loadInterstitialAd();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -99,6 +114,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                   onTap: () {
+                    _showInterstitialAd();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => MyAccount()));
                   },
@@ -139,6 +155,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                   onTap: () {
+                    _showInterstitialAd();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -181,6 +198,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                   onTap: () {
+                    _showInterstitialAd();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => MyMessage()));
                   },
@@ -224,6 +242,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                   onTap: () {
+                    _showInterstitialAd();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => ViolatePage()));
                   },
@@ -263,6 +282,7 @@ class _ChildFloorServiceState extends State<ChildFloorService> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                   onTap: () {
+                    _showInterstitialAd();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => RulesPage()));
                   },

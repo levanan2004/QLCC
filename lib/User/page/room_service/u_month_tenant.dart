@@ -1,6 +1,7 @@
 import 'package:apartment_management/Admin/components/con_month_tenant.dart';
 import 'package:apartment_management/User/components/circular.dart';
 import 'package:apartment_management/User/page/room_service/u_service_tenant.dart';
+import 'package:apartment_management/admob/native.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -137,10 +138,20 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
                           Text(
                             "Tháng ".tr() + MonthOld.toString(),
                             style: TextStyle(
-                                color: Color.fromARGB(255, 149, 208, 238),
-                                fontSize: 20,
-                                fontFamily: "Urbanist",
-                                fontWeight: FontWeight.bold),
+                              color: Color.fromARGB(255, 149, 208, 238),
+                              fontSize: 30,
+                              fontFamily: "Urbanist",
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Color.fromARGB(255, 12, 233, 170)
+                                      .withOpacity(0.5), // Màu sắc của bóng
+                                  offset: Offset(2.0,
+                                      2.0), // Vị trí của bóng so với văn bản
+                                  blurRadius: 4.0, // Độ mờ của bóng
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -158,7 +169,7 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 50,
+          height: 20,
         ),
         Row(
           children: [
@@ -167,10 +178,20 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
             ),
             Text("Dịch vụ: ".tr(),
                 style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Urbanist")),
+                  color: Colors.green,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Urbanist",
+                  shadows: [
+                    Shadow(
+                      color: Color.fromARGB(255, 128, 209, 227)
+                          .withOpacity(0.5), // Màu sắc của bóng
+                      offset:
+                          Offset(2.0, 2.0), // Vị trí của bóng so với văn bản
+                      blurRadius: 4.0, // Độ mờ của bóng
+                    ),
+                  ],
+                )),
           ],
         ),
         Padding(
@@ -179,6 +200,9 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
             thickness: 0.5,
             color: Colors.black,
           ),
+        ),
+        SizedBox(
+          height: 20,
         ),
         // trang này chứa code Layout và lấy dữ liệu Aparments từ Firebase.
         User_SBServiceTenant(
@@ -191,6 +215,7 @@ class _User_MonthRoomState extends State<User_MonthRoom> {
         SizedBox(
           height: 25,
         ),
+        NativeAds()
       ],
     );
   }

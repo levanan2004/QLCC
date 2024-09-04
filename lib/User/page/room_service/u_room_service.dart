@@ -7,11 +7,11 @@ import 'package:apartment_management/User/page/room_service/u_service_get_apartm
 import 'package:apartment_management/User/page/violate/u_page_violate.dart';
 import 'package:apartment_management/admob/banner.dart';
 import 'package:apartment_management/admob/interstitial.dart';
+import 'package:apartment_management/admob/open_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class User_MyRoomTenantService extends StatefulWidget {
   const User_MyRoomTenantService({
@@ -34,31 +34,15 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
   }
   // </quảng cáo Trung gian(Interstitial)>
 
+  final AppOpenAdService _adService = AppOpenAdService();
   @override
   void initState() {
     super.initState();
     checkUserCode();
     // Chạy quảng cáo Mở Ứng Dụng
-    loadad();
+    _adService.loadAd();
     // Khởi tạo Trung gian(Interstitial) khi vừa sang trang này
     _interstitialAdService.loadInterstitialAd();
-  }
-
-  AppOpenAd? _appOpenAd;
-  loadad() {
-    AppOpenAd.load(
-      adUnitId: 'ca-app-pub-3741659942413980/8735305607',
-      request: AdRequest(),
-      adLoadCallback: AppOpenAdLoadCallback(
-        onAdLoaded: (ad) {
-          _appOpenAd = ad;
-          _appOpenAd!.show();
-        },
-        onAdFailedToLoad: (error) {
-          debugPrint("Error:  $error");
-        },
-      ),
-    );
   }
 
   void checkUserCode() async {
@@ -240,7 +224,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: GestureDetector(
                               onTap: () {
-                                // _showInterstitialAd();
+                                _showInterstitialAd();
 
                                 Navigator.push(
                                     context,
@@ -286,6 +270,7 @@ class _User_MyRoomTenantServiceState extends State<User_MyRoomTenantService> {
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             child: GestureDetector(
                                 onTap: () {
+                                  _showInterstitialAd();
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

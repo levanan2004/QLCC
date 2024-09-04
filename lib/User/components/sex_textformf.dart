@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SexTextForm extends StatelessWidget {
@@ -19,7 +20,7 @@ class SexTextForm extends StatelessWidget {
     // Hàm kiểm tra nhập vào 1 và 0
     String? genderValidator(String? value) {
       if (value != "1" && value != "0") {
-        return 'Please enter "1" for Male or "0" for Female';
+        return "Vui lòng nhập '1' cho Nam hoặc '0' cho Nữ".tr();
       }
       return null;
     }

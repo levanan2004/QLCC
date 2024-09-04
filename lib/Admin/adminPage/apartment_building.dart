@@ -1,6 +1,7 @@
 import 'package:apartment_management/Admin/feature_page/add_apartment_building.dart';
 import 'package:apartment_management/Admin/page_components/pc_apartment_building.dart';
 import 'package:apartment_management/User/page/drawer/my_drawer.dart';
+import 'package:apartment_management/admob/open_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,14 @@ class MyAdminHome extends StatefulWidget {
 }
 
 class _MyAdminHomeState extends State<MyAdminHome> {
+  final AppOpenAdService _adService = AppOpenAdService();
+  @override
+  void initState() {
+    super.initState();
+    // Chạy quảng cáo Mở Ứng Dụng
+    _adService.loadAd();
+  }
+
   void _nextToAddAB() {
     Navigator.push(
       context,
@@ -58,7 +67,7 @@ class _MyAdminHomeState extends State<MyAdminHome> {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NumberTextForm extends StatelessWidget {
@@ -39,11 +40,11 @@ class NumberTextForm extends StatelessWidget {
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter a number';
+          return "Vui lòng nhập số".tr();
         }
         final numberRegex = RegExp(r'^[0-9]+$');
         if (!numberRegex.hasMatch(value)) {
-          return 'Please enter a valid number';
+          return "Vui lòng nhập số hợp lệ".tr();
         }
         return null;
       },

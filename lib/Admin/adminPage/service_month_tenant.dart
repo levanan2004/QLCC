@@ -126,29 +126,59 @@ class _MonthAparmentState extends State<MonthAparment> {
                             ? "Hãy thêm Tháng".tr()
                             : "Tháng ".tr() + MonthOld.toString(),
                         style: TextStyle(
-                            color: Color.fromARGB(255, 149, 208, 238),
-                            fontSize: 20,
-                            fontFamily: "Urbanist",
-                            fontWeight: FontWeight.bold),
+                          color: Color.fromARGB(255, 149, 208, 238),
+                          fontSize: 25,
+                          fontFamily: "Urbanist",
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              color: Color.fromARGB(255, 12, 233, 170)
+                                  .withOpacity(0.5), // Màu sắc của bóng
+                              offset: Offset(
+                                  2.0, 2.0), // Vị trí của bóng so với văn bản
+                              blurRadius: 4.0, // Độ mờ của bóng
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 20,
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyAddServiceMonth(
-                                  idApartmentBuilding:
-                                      widget.idApartmentBuilding,
-                                  idServiceAll: widget.idServiceAll,
-                                  idServiceName: widget.idServiceName,
+                      Container(
+                        margin: EdgeInsets.only(top: 12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Color.fromARGB(255, 12, 233, 170),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(
+                                  0.5), // Màu bóng, có thể thay đổi
+                              spreadRadius: 5, // Độ lan tỏa của bóng
+                              blurRadius: 10, // Độ mờ của bóng
+                              offset:
+                                  Offset(0, 4), // Vị trí của bóng so với item
+                            ),
+                          ],
+                        ),
+                        child: IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyAddServiceMonth(
+                                    idApartmentBuilding:
+                                        widget.idApartmentBuilding,
+                                    idServiceAll: widget.idServiceAll,
+                                    idServiceName: widget.idServiceName,
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          child: Icon(Icons.add))
+                              );
+                            },
+                            icon: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            )),
+                      )
                     ],
                   ),
                   // UnPaid
@@ -176,10 +206,20 @@ class _MonthAparmentState extends State<MonthAparment> {
             ),
             Text("Chưa đóng".tr(),
                 style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Urbanist")),
+                  color: Colors.red,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Urbanist",
+                  shadows: [
+                    Shadow(
+                      color: Color.fromARGB(255, 149, 208, 238)
+                          .withOpacity(0.5), // Màu sắc của bóng
+                      offset:
+                          Offset(2.0, 2.0), // Vị trí của bóng so với văn bản
+                      blurRadius: 4.0, // Độ mờ của bóng
+                    ),
+                  ],
+                )),
             SizedBox(
               width: 20,
             ),
@@ -187,22 +227,42 @@ class _MonthAparmentState extends State<MonthAparment> {
             SizedBox(
               width: 20,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MyAddMonthRoom(
-                        idApartmentBuilding: widget.idApartmentBuilding,
-                        idServiceAll: widget.idServiceAll,
-                        idServiceMonth: idServiceMonth,
-                        idServiceName: widget.idServiceName,
-                        Month: MonthOld,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              margin: EdgeInsets.only(top: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color.fromARGB(255, 12, 233, 170),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black
+                        .withOpacity(0.5), // Màu bóng, có thể thay đổi
+                    spreadRadius: 5, // Độ lan tỏa của bóng
+                    blurRadius: 10, // Độ mờ của bóng
+                    offset: Offset(0, 4), // Vị trí của bóng so với item
+                  ),
+                ],
+              ),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyAddMonthRoom(
+                          idApartmentBuilding: widget.idApartmentBuilding,
+                          idServiceAll: widget.idServiceAll,
+                          idServiceMonth: idServiceMonth,
+                          idServiceName: widget.idServiceName,
+                          Month: MonthOld,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                child: Icon(Icons.add))
+                    );
+                  },
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  )),
+            )
           ],
         ),
         Padding(
@@ -252,10 +312,20 @@ class _MonthAparmentState extends State<MonthAparment> {
             ),
             Text("Đã đóng".tr(),
                 style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Urbanist")),
+                  color: Colors.green,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Urbanist",
+                  shadows: [
+                    Shadow(
+                      color: Color.fromARGB(255, 186, 213, 227)
+                          .withOpacity(0.5), // Màu sắc của bóng
+                      offset:
+                          Offset(2.0, 2.0), // Vị trí của bóng so với văn bản
+                      blurRadius: 4.0, // Độ mờ của bóng
+                    ),
+                  ],
+                )),
             SizedBox(
               width: 20,
             ),

@@ -40,21 +40,51 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       // pop loading circle
-      // ignore: use_build_context_synchronously
       Navigator.pop(context);
 
-      //display error message
+      // Display error message based on error code
       displayMessage(e.code);
     }
   }
 
-  // Display a dialog message
-  void displayMessage(String message) {
+  void displayMessage(String errorCode) {
+    String errorMessage;
+
+    switch (errorCode) {
+      case 'user-not-found':
+        errorMessage = "Tài khoản không tồn tại.".tr();
+        break;
+      case 'wrong-password':
+        errorMessage = "Bạn đã nhập sai mật khẩu.".tr();
+        break;
+      case 'invalid-email':
+        errorMessage = "Email không hợp lệ.".tr();
+        break;
+      case 'user-disabled':
+        errorMessage = "Tài khoản đã bị vô hiệu hóa.".tr();
+        break;
+      case 'too-many-requests':
+        errorMessage = "Quá nhiều yêu cầu. Vui lòng thử lại sau.".tr();
+        break;
+      default:
+        errorMessage = "Đã xảy ra lỗi không xác định.".tr();
+    }
+
     showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: Text(message),
-            ));
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Lỗi đăng nhập".tr()),
+        content: Text(errorMessage),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Đóng".tr()),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -72,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 25,
                   ),
-                  //welcome back message
+                  // Welcome back message
                   Text(
                     "Chào mừng trở lại!\nRất vui khi thấy bạn!".tr(),
                     style: TextStyle(

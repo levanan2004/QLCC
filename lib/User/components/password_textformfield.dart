@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PasswordTextForm extends StatelessWidget {
@@ -20,7 +21,7 @@ class PasswordTextForm extends StatelessWidget {
   Widget build(BuildContext context) {
     String? customValidator(String? value) {
       if (value == null || value.isEmpty) {
-        return 'Trường này là bắt buộc';
+        return "Trường này là bắt buộc".tr();
       }
       return null;
     }

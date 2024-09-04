@@ -24,38 +24,43 @@ class _MySettingsPageState extends State<MySettingsPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   "Chuyển đổi ngôn ngữ: ".tr(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // Hàm xử lý khi nút Ngôn ngữ được nhấn
-                    final currentLocale = context.locale.toString();
-                    if (currentLocale == "en") {
-                      context.setLocale(Locale("vi"));
-                    } else {
-                      context.setLocale(Locale("en"));
-                    }
-                  },
-                  child: Text("Tiếng Việt").tr(),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Hàm xử lý khi nút Ngôn ngữ được nhấn
-                    final currentLocale = context.locale.toString();
-                    if (currentLocale == "en") {
-                      context.setLocale(Locale("vi"));
-                    } else {
-                      context.setLocale(Locale("en"));
-                    }
-                  },
-                  child: Text("Tiếng Anh").tr(),
-                ),
               ],
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              ElevatedButton(
+                onPressed: () {
+                  // Hàm xử lý khi nút Ngôn ngữ được nhấn
+                  final currentLocale = context.locale.toString();
+                  if (currentLocale == "en") {
+                    context.setLocale(Locale("vi"));
+                  } else {
+                    context.setLocale(Locale("en"));
+                  }
+                },
+                child: Text("Tiếng Việt").tr(),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Hàm xử lý khi nút Ngôn ngữ được nhấn
+                  final currentLocale = context.locale.toString();
+                  if (currentLocale == "en") {
+                    context.setLocale(Locale("vi"));
+                  } else {
+                    context.setLocale(Locale("en"));
+                  }
+                },
+                child: Text("Tiếng Anh").tr(),
+              ),
+            ]),
+            SizedBox(
+              height: 250,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

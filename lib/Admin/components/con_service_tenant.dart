@@ -26,10 +26,23 @@ class MyContainerServiceMonthTenant extends StatelessWidget {
             Container(
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Status == true ? Colors.green : Colors.red),
+                  borderRadius: BorderRadius.circular(8),
+                  color: Status == true ? Colors.green : Colors.red,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 149, 208, 238)
+                          .withOpacity(0.5), // Màu bóng, có thể thay đổi
+                      spreadRadius: 5, // Độ lan tỏa của bóng
+                      blurRadius: 10, // Độ mờ của bóng
+                      offset: Offset(0, 4), // Vị trí của bóng so với item
+                    ),
+                  ],
+                ),
                 margin: const EdgeInsets.only(top: 25, left: 25, right: 5),
-                child: Icon(Icons.home)),
+                child: Icon(
+                  Icons.home,
+                  size: 30,
+                )),
             Column(
               children: [
                 SizedBox(
@@ -55,10 +68,19 @@ class MyContainerServiceMonthTenant extends StatelessWidget {
             Text(
               "Căn Hộ " + idApartmentName.toString(),
               style: TextStyle(
-                  color: Status == true ? Colors.green : Colors.red,
-                  fontSize: 20,
-                  fontFamily: "Urbanist",
-                  fontWeight: FontWeight.bold),
+                color: Status == true ? Colors.green : Colors.red,
+                fontSize: 20,
+                fontFamily: "Urbanist",
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    color: Color.fromARGB(255, 186, 213, 227)
+                        .withOpacity(0.5), // Màu sắc của bóng
+                    offset: Offset(2.0, 2.0), // Vị trí của bóng so với văn bản
+                    blurRadius: 4.0, // Độ mờ của bóng
+                  ),
+                ],
+              ),
             ),
           ],
         )

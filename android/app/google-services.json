@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1038744483020-fo81hp1fiur2bvda1bkl2vjmebc456nk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apartment_management",
+            "certificate_hash": "fc4dc75297b6ce0b09db09eb9973a60c872fdec6"
+          }
+        },
+        {
           "client_id": "1038744483020-gn6sm5qhsr82tjphg923ugbfnpde6agt.apps.googleusercontent.com",
           "client_type": 3
         }

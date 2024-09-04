@@ -33,7 +33,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       alignment: Alignment.center,
       child: _bannerAd != null
           ? AdWidget(ad: _bannerAd!)
-          : SizedBox(height: 50), // Placeholder while loading
+          : SizedBox(height: 80), // Placeholder while loading
       width: _bannerAd?.size.width.toDouble() ?? 0,
       height: _bannerAd?.size.height.toDouble() ?? 0,
     );

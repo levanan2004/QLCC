@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class RequiredTextForm extends StatelessWidget {
@@ -22,10 +23,10 @@ class RequiredTextForm extends StatelessWidget {
   Widget build(BuildContext context) {
     String? customValidator(String? value, {bool? requireLeadingZero}) {
       if (value == null || value.isEmpty) {
-        return 'Trường này là bắt buộc';
+        return "Trường này là bắt buộc".tr();
       }
       if (requireLeadingZero == false && value.startsWith('0')) {
-        return 'Ký tự đầu tiên không được là số 0';
+        return "Ký tự đầu tiên không được là số 0".tr();
       }
       return null;
     }

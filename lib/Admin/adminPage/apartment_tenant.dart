@@ -1,5 +1,6 @@
 import 'package:apartment_management/Admin/feature_page/add_apartment_tenant.dart';
 import 'package:apartment_management/Admin/page_components/pc_apartment_tenant.dart';
+import 'package:apartment_management/admob/banner.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -100,7 +101,17 @@ class _MyApartmentDetailsState extends State<MyApartmentDetails> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // quảng cáo banner
+                    BannerAdWidget()
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
                 ),
                 Row(
                   children: [

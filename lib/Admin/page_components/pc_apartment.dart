@@ -76,7 +76,7 @@ class _SBApartmentState extends State<SBApartment> {
     }
 
     return SizedBox(
-      height: 200,
+      height: 150,
       child: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection("ApartmentBuilding")

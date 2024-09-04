@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class itemPageNotification extends StatelessWidget {
   final String title;
@@ -89,30 +88,26 @@ class itemPageNotification extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Email: $userEmail',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: status == true ? Colors.grey : Colors.blue,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Text(
-                  "Thời gian: ".tr() +
-                      DateFormat.yMMMd().format(timeStamp.toDate()),
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: status == true ? Colors.grey : Colors.black,
-                  ),
-                ),
-              ],
+            Text(
+              'Email: $userEmail',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              style: TextStyle(
+                fontSize: 14,
+                color: status == true ? Colors.grey : Colors.blue,
+              ),
             ),
             SizedBox(height: 10),
+            Text(
+              "Thời gian: ".tr() +
+                  DateFormat.yMMMd().format(timeStamp.toDate()),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              style: TextStyle(
+                fontSize: 14,
+                color: status == true ? Colors.grey : Colors.black,
+              ),
+            ),
           ],
         ),
       ),

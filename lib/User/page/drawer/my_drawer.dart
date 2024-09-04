@@ -1,4 +1,5 @@
 import 'package:apartment_management/User/page/drawer/account_page.dart';
+import 'package:apartment_management/User/page/drawer/contact_page.dart';
 import 'package:apartment_management/User/page/drawer/message/page_message.dart';
 import 'package:apartment_management/User/page/drawer/setting_page.dart';
 import 'package:apartment_management/admob/interstitial.dart';
@@ -109,6 +110,7 @@ class _MyDrawerState extends State<MyDrawer> {
                           fontSize: 20,
                           color: Colors.black)),
                   onTap: () {
+                    _showInterstitialAd();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => MyAccount()));
                   },
@@ -123,6 +125,19 @@ class _MyDrawerState extends State<MyDrawer> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => MySettingsPage()));
+                  },
+                ),
+                // Thông tin liên hệ
+                ListTile(
+                  leading: Icon(Icons.perm_device_information_outlined),
+                  title: Text("Thông Tin Liên Hệ".tr(),
+                      style: TextStyle(
+                          fontFamily: "Urbanist",
+                          fontSize: 20,
+                          color: Colors.black)),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => ContractPage()));
                   },
                 ),
               ],

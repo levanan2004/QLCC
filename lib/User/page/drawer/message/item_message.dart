@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -20,7 +21,7 @@ class itemPageMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Chuyển đổi thời gian
-    String formattedDate = DateFormat('dd/MM/yyyy').format(timeStamp.toDate());
+    // String formattedDate = DateFormat('dd/MM/yyyy').format(timeStamp.toDate());
     String formattedHour = DateFormat('HH:mm').format(timeStamp.toDate());
     // chuyển đổi email lấy tên
     String username = userEmail.split('@')[0];
@@ -29,21 +30,13 @@ class itemPageMessage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            isCurrentUser
-                ? 'Tôi:    ' + formattedHour
-                : username + ':    ' + formattedHour,
-            style: TextStyle(
-              color: isCurrentUser ? Colors.grey : Colors.black,
-              fontSize: 12,
-              fontFamily: "Urbanist",
-            ),
-          ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-            padding: const EdgeInsets.all(10.0),
+            margin: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
-              color: isCurrentUser ? Colors.blueAccent : Colors.grey[300],
+              color: isCurrentUser
+                  ? Color.fromARGB(255, 12, 233, 170)
+                  : Colors.grey[300],
               borderRadius: isCurrentUser
                   ? const BorderRadius.only(
                       topLeft: Radius.circular(12.0),
@@ -57,21 +50,33 @@ class itemPageMessage extends StatelessWidget {
                     ),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (!isCurrentUser)
+                  Text(
+                    username,
+                    style: TextStyle(
+                        color: isCurrentUser
+                            ? Colors.black87
+                            : Color.fromARGB(255, 83, 228, 167),
+                        fontSize: isCurrentUser ? 12 : 16,
+                        fontFamily: "Urbanist",
+                        fontWeight: isCurrentUser ? null : FontWeight.bold),
+                  ),
+                const SizedBox(height: 5),
                 Text(
                   content,
                   style: TextStyle(
-                    color: isCurrentUser ? Colors.white : Colors.black,
+                    color: Colors.black,
                     fontSize: 18,
                     fontFamily: "Urbanist",
                   ),
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  formattedDate,
+                  formattedHour,
                   style: TextStyle(
-                    color: isCurrentUser ? Colors.white70 : Colors.black54,
+                    color: Colors.black54,
                     fontSize: 12,
                     fontFamily: "Urbanist",
                   ),

@@ -17,11 +17,37 @@ class _MyMessageState extends State<MyMessage> {
   String email = FirebaseAuth.instance.currentUser!.email!;
   String? code;
   // Text controller
-  final textController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
+
+  // di chuyển khi xuống cuối tin nhắn sau khi chuyển trang
+  FocusNode myFocusNode = FocusNode();
   @override
   void initState() {
     super.initState();
     fetchCODE();
+    // add listener khi focus node
+    myFocusNode.addListener(() {
+      if (myFocusNode.hasFocus) {
+        // Tạo độ trễ của bàn phím để có time hiển thị
+        // Sau đó lượng không gian còn lại sẽ được tính toán
+        // Sau đó cuộn xuống
+        Future.delayed(const Duration(milliseconds: 500), () => scrollDown());
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    myFocusNode.dispose();
+    _textController.dispose();
+    super.dispose();
+  }
+
+  // scroll controller
+  final ScrollController _scrollController = ScrollController();
+  void scrollDown() {
+    _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+        duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
   }
 
   // Hàm lấy CODE từ Firestore
@@ -47,22 +73,29 @@ class _MyMessageState extends State<MyMessage> {
   // GỬi message
   void postMessage() async {
     if (code != null) {
-      try {
-        // Thêm document vào collection 'Message'.doc(code).collection('Post')
-        await FirebaseFirestore.instance
-            .collection('Message')
-            .doc(code)
-            .collection('Post')
-            .add({
-          'UserEmail': email,
-          'Message': textController.text.trim(),
-          'TimeStamp': Timestamp.now(),
-          'Likes': [],
-        });
-        textController.clear();
-        print('Gửi tin nhắn thành công');
-      } catch (e) {
-        print('Error posting message: $e');
+      if (_textController.text.trim().isNotEmpty) {
+        try {
+          // Thêm document vào collection 'Message'.doc(code).collection('Post')
+          await FirebaseFirestore.instance
+              .collection('Message')
+              .doc(code)
+              .collection('Post')
+              .add({
+            'UserEmail': email,
+            'Message': _textController.text.trim(),
+            'TimeStamp': Timestamp.now(),
+            'Likes': [],
+          });
+          _textController.clear();
+          // Cuộn xuống sau khi gửi tin nhắn
+          scrollDown();
+          // Ẩn bàn phím bằng cách di chuyển sự chú ý ra khỏi TextField
+          FocusScope.of(context).unfocus();
+
+          print('Gửi tin nhắn thành công');
+        } catch (e) {
+          print('Error posting message: $e');
+        }
       }
     }
   }
@@ -70,7 +103,7 @@ class _MyMessageState extends State<MyMessage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
           "Tin Nhắn".tr(),
@@ -82,7 +115,7 @@ class _MyMessageState extends State<MyMessage> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.all(10),
         child: Column(
           children: [
             Expanded(
@@ -96,6 +129,7 @@ class _MyMessageState extends State<MyMessage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
+                      controller: _scrollController,
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         final message = snapshot.data!.docs[index];
@@ -126,18 +160,28 @@ class _MyMessageState extends State<MyMessage> {
                 children: [
                   Expanded(
                     child: MyTextFieldPost(
-                      controller: textController,
+                      controller: _textController,
                       hintText: "Nhập tin nhắn".tr(),
+                      focusNode: myFocusNode,
                       obscureText: false,
+                      ontap: () {
+                        // Cuộn xuống khi người dùng nhấp vào TextField
+                        scrollDown();
+                      },
                     ),
                   ),
                   // Button Gửi
-                  IconButton(
-                    onPressed: postMessage,
-                    icon: const Icon(
-                      Icons.send,
-                      color: Colors.blue,
-                      size: 30,
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromARGB(255, 12, 233, 170)),
+                    child: IconButton(
+                      onPressed: postMessage,
+                      icon: const Icon(
+                        Icons.arrow_upward,
+                        color: Colors.white,
+                        size: 30,
+                      ),
                     ),
                   ),
                 ],

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class EmailTextForm extends StatelessWidget {
@@ -47,7 +48,7 @@ class EmailTextForm extends StatelessWidget {
       ),
       validator: (value) {
         if (!isValidEmail(value!)) {
-          return 'Vui lòng nhập Email hợp lệ';
+          return "Vui lòng nhập Email hợp lệ".tr();
         }
         return null;
       },

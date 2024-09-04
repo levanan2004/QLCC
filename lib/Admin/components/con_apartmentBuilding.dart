@@ -123,7 +123,7 @@ class MyContainerApartmentBuilding extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  "Mã Giới Thiệu  -  " + code,
+                  "Mã Giới Thiệu  -  ".tr() + code,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
