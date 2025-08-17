@@ -102,6 +102,12 @@ class _MyMessageState extends State<MyMessage> {
 
   @override
   Widget build(BuildContext context) {
+    // Nếu code chưa load xong thì show loading tránh lỗi null
+    if (code == null) {
+      return const Scaffold(
+        body: Center(child: Circular()),
+      );
+    }
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -144,7 +150,7 @@ class _MyMessageState extends State<MyMessage> {
                     );
                   } else if (snapshot.hasError) {
                     return Center(
-                      child: Text('Lỗi: ${snapshot.error}'),
+                      child: Text('Lỗi: {snapshot.error}'),
                     );
                   }
                   return const Center(

@@ -1,59 +1,26 @@
 {
   "project_info": {
-    "project_number": "1038744483020",
-    "project_id": "apartment-management-9ab83",
-    "storage_bucket": "apartment-management-9ab83.appspot.com"
+    "project_number": "729321326933",
+    "project_id": "management-apartment",
+    "storage_bucket": "management-apartment.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1038744483020:android:0ded9245ad6acfd0083e69",
+        "mobilesdk_app_id": "1:729321326933:android:d14af93517a3f10bdd87dc",
         "android_client_info": {
           "package_name": "com.example.apartment_management"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "1038744483020-ddlp9o8cd656jesbk15o65600dekfg8e.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.apartment_management",
-            "certificate_hash": "5e77b83267c2566cb8e70a0f7d99652703f2cdd2"
-          }
-        },
-        {
-          "client_id": "1038744483020-fo81hp1fiur2bvda1bkl2vjmebc456nk.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.apartment_management",
-            "certificate_hash": "fc4dc75297b6ce0b09db09eb9973a60c872fdec6"
-          }
-        },
-        {
-          "client_id": "1038744483020-gn6sm5qhsr82tjphg923ugbfnpde6agt.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAdwR4_nwCrPvhiCBRDk5Q9YRIQaemliVw"
+          "current_key": "AIzaSyDqkgX9KsM5J19UAkjVJJL4kOFyhKJUeJ4"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1038744483020-gn6sm5qhsr82tjphg923ugbfnpde6agt.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "1038744483020-jva8m4c6lokga2gq85rqk96g8me6e1em.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.apartmentManagement"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

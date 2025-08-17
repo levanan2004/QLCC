@@ -47,28 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAdwR4_nwCrPvhiCBRDk5Q9YRIQaemliVw',
-    appId: '1:1038744483020:android:0ded9245ad6acfd0083e69',
-    messagingSenderId: '1038744483020',
-    projectId: 'apartment-management-9ab83',
-    storageBucket: 'apartment-management-9ab83.appspot.com',
+    apiKey: 'AIzaSyDqkgX9KsM5J19UAkjVJJL4kOFyhKJUeJ4',
+    appId: '1:729321326933:android:d14af93517a3f10bdd87dc',
+    messagingSenderId: '729321326933',
+    projectId: 'management-apartment',
+    storageBucket: 'management-apartment.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDqSOljfFhWIgvg0SlkPSXVBzqKB46aduU',
-    appId: '1:1038744483020:ios:ea809abd5a88ba9b083e69',
-    messagingSenderId: '1038744483020',
-    projectId: 'apartment-management-9ab83',
-    storageBucket: 'apartment-management-9ab83.appspot.com',
+    apiKey: 'AIzaSyBlKb5UsOQysL3YNYFYqeNldP6jjvDn7Is',
+    appId: '1:729321326933:ios:96e70b0ed2e66ad9dd87dc',
+    messagingSenderId: '729321326933',
+    projectId: 'management-apartment',
+    storageBucket: 'management-apartment.firebasestorage.app',
     iosBundleId: 'com.example.apartmentManagement',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDqSOljfFhWIgvg0SlkPSXVBzqKB46aduU',
-    appId: '1:1038744483020:ios:ea809abd5a88ba9b083e69',
-    messagingSenderId: '1038744483020',
-    projectId: 'apartment-management-9ab83',
-    storageBucket: 'apartment-management-9ab83.appspot.com',
+    apiKey: 'AIzaSyBlKb5UsOQysL3YNYFYqeNldP6jjvDn7Is',
+    appId: '1:729321326933:ios:96e70b0ed2e66ad9dd87dc',
+    messagingSenderId: '729321326933',
+    projectId: 'management-apartment',
+    storageBucket: 'management-apartment.firebasestorage.app',
     iosBundleId: 'com.example.apartmentManagement',
   );
 }

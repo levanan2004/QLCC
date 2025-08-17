@@ -41,26 +41,6 @@ class _ContractPageState extends State<ContractPage> {
             ),
             const SizedBox(height: 16),
             Row(
-              children: [
-                Expanded(
-                  child: Text(
-                      "Chúng tôi nhận tạo app theo yêu cầu của bạn".tr(),
-                      style: TextStyle(
-                          fontFamily: "Urbanist",
-                          fontSize: 18,
-                          color: Color.fromARGB(255, 237, 108, 61))),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Divider(
-                thickness: 0.5,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Row(
               children: const [
                 Icon(Icons.email, color: Colors.red),
                 SizedBox(width: 8),
