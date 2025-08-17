@@ -1,5 +1,5 @@
 ****************Topic****************
-: Quản lý khu chung cư đa nền tảng
+: Cross-platform Apartment Complex Management
 
 ****************Tech Stack****************
 : Flutter + Firebase
